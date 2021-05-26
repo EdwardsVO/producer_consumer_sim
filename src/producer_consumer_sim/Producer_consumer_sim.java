@@ -5,6 +5,7 @@
  */
 package producer_consumer_sim;
 
+import java.util.concurrent.Semaphore;
 /**
  *
  * @author Edward Vergel
@@ -16,6 +17,15 @@ public class Producer_consumer_sim {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Semaphore mutex = new Semaphore(1);
+        Semaphore semButtonProd = new Semaphore(1);
+        Semaphore semButtonCons = new Semaphore(6);
+        
+        ButtonsProd bp = new ButtonsProd(semButtonProd, semButtonCons, mutex, "Rafaello");
+        
+        bp.start();
+
     }
     
 }
