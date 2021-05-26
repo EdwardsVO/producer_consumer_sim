@@ -19,12 +19,17 @@ public class Producer_consumer_sim {
         // TODO code application logic here
         
         Semaphore mutex = new Semaphore(1);
-        Semaphore semButtonProd = new Semaphore(1);
-        Semaphore semButtonCons = new Semaphore(6);
+        Semaphore semButtonProd = new Semaphore(60);
+        Semaphore semButtonCons = new Semaphore(0);
+        Semaphore buttProducer = new Semaphore(4);
         
-        ButtonsProd bp = new ButtonsProd(semButtonProd, semButtonCons, mutex, "Rafaello");
+        ButtonsProd seb = new ButtonsProd(buttProducer, semButtonProd, semButtonCons, mutex, "Sebita");
+        ButtonsProd ed = new ButtonsProd(buttProducer,semButtonProd, semButtonCons, mutex, "Edward");
+        Time time = new Time();
         
-        bp.start();
+        time.start();
+        seb.start();
+        ed.start();
 
     }
     

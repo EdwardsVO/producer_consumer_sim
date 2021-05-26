@@ -13,33 +13,42 @@ import java.util.logging.Logger;
  *
  * @author sebastian
  */
-public class ButtonsProd extends Thread{
-    Semaphore mutex; 
-    Semaphore semButtonProd;
-    Semaphore semButtonCons;
-    String name;
-    
-    public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name){
+public class ButtonsProd extends Thread {
+
+    private Semaphore mutex;
+    private Semaphore semButtonProd;
+    private Semaphore semButtonCons;
+    private Semaphore buttProducer;
+    private String name;
+    private int ButtonsPerDay = 4;
+
+    public ButtonsProd(Semaphore buttProducer, Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
         this.semButtonProd = semButtonProd;
         this.semButtonCons = semButtonCons;
         this.name = name;
+        this.buttProducer = buttProducer;
     }
-    
+
     public void run() {
-        while(true) {
+        while (true) {
             try {
-                
-                    this.semButtonProd.acquire();
-                    this.mutex.acquire();
-                    Almacen.contButtons++;
-                    System.out.println("Se ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
-                    this.mutex.release();
-                    this.semButtonProd.release();                         
-                
+                this.buttProducer.acquire();
+                this.semButtonProd.acquire();
+                this.mutex.acquire();
+                Almacen.contButtons++;
+                System.out.println(this.name + " fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
+                Thread.sleep(Almacen.dayEquiv/this.ButtonsPerDay);
+                this.mutex.release();
+                this.semButtonCons.release();
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+    }
+    
+    public void byeProdButton(){
+        this.buttProducer.release();
     }
 }
