@@ -9,6 +9,7 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import administration.Almacen;
+import functions.Time;
 
 /**
  *
@@ -24,6 +25,7 @@ public class ButtonsProd extends Thread {
     private Semaphore semButtonCons;
     private int ButtonsPerDay = 4;
     private int cantProduc = 0;
+    private Time time;
 
     public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
@@ -49,6 +51,10 @@ public class ButtonsProd extends Thread {
                     Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
+            if(Time.passed == true) {
+                this.cantProduc = 0;
+            }
+            
         }
     }
 

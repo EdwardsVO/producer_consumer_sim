@@ -19,7 +19,6 @@ public class dataFunctions {
             while((line = br.readLine()) != null) {
                 
                 String[] data = line.split(",");
-                System.out.println(line);
             }
             
     } catch(FileNotFoundException e) {
