@@ -14,9 +14,11 @@ import java.util.logging.Logger;
  * @author Edward Vergel
  */
 public class Time extends Thread {
-
+    
+    private boolean start;
+    
     public void run() {
-        while (true) {
+        while (this.start) {
             while (Almacen.hoursPassed != 24) {
                 try {
                     Thread.sleep(Almacen.dayEquiv / 24);
@@ -30,5 +32,12 @@ public class Time extends Thread {
 
             System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
         }
+    }
+    
+    public void kill(){
+        this.start = false;
+    }
+    public void init(){
+        this.start = true;
     }
 }

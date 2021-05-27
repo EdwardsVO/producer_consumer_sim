@@ -17,6 +17,8 @@ import administration.Almacen;
 public class ButtonsProd extends Thread {
 
     private String name;
+    private boolean start;
+    private Almacen almacen;
     private Semaphore mutex;
     private Semaphore semButtonProd;
     private Semaphore semButtonCons;
@@ -31,22 +33,47 @@ public class ButtonsProd extends Thread {
     }
 
     public void run() {
-        
-        while (true) {
-            try {
-                this.semButtonProd.acquire();
-                this.mutex.acquire();
-                Almacen.contButtons++;
-                System.out.println("Productor " + this.name +" ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
-                Thread.sleep(Almacen.dayEquiv/this.ButtonsPerDay);
-                this.mutex.release();
-                this.semButtonCons.release();
+        while (this.start) {
+            while (this.cantProduc != 4) {
+                try {
+                    this.semButtonProd.acquire();
+                    this.mutex.acquire();
+                    Almacen.contButtons++;
+                    this.cantProduc++;
+                    System.out.println("Productor " + this.name + " ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
+                    Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
+                    this.mutex.release();
+                    this.semButtonCons.release();
 
-            } catch (InterruptedException ex) {
-                Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         }
-        
     }
-    
+
+    public void kill() {
+        this.start = false;
+    }
+
+    public void init() {
+        this.start = true;
+    }
+
+    public int getButtonsPerDay() {
+        return ButtonsPerDay;
+    }
+
+    public void setButtonsPerDay(int ButtonsPerDay) {
+        this.ButtonsPerDay = ButtonsPerDay;
+    }
+
+    public int getCantProduc() {
+        return cantProduc;
+    }
+
+    public void setCantProduc(int cantProduc) {
+        this.cantProduc = cantProduc;
+    }
+
 }

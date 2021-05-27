@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/producer_consumer_sim/Almacen.java</file>
-            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/producer_consumer_sim/Interfaz.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/administration/Almacen.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/producers/BodyProd.java</file>
             <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/producer_consumer_sim/Producer_consumer_sim.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/producers/ButtonsProd.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/functions/Time.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/producer_consumer_sim/src/gui/Interfaz.java</file>
         </group>
     </open-files>
 </project-private>
