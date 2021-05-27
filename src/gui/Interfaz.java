@@ -221,13 +221,16 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void hireProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireProdButtonActionPerformed
         try {
-            if(buttonsProdEmp.size() <= 4){ //LIMITE DE PRODUCTORES 
+            if(buttonsProdEmp.size() < 4){ //LIMITE DE PRODUCTORES 
             ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutex, String.valueOf(buttonsProdEmp.size()));
             buttonsProdEmp.add(buttonProd);
             System.out.println("Se ha agregado con exito");
+            }else {
+                JOptionPane.showMessageDialog(null, "Capacidad de productores alcanzada");
             }
+            
         } catch (Error e) {
-            JOptionPane.showMessageDialog(null, "Capacidad de productores alcanzada");
+            System.out.println(e);
         
        }
 
