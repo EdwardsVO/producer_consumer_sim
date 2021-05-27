@@ -3,12 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package producer_consumer_sim;
+package gui;
 
+import producers.ButtonsProd;
 import java.util.concurrent.Semaphore;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
+import administration.Almacen;
+import administration.Employee;
+import functions.Time;
+import functions.dataFunctions;
 
 /**
  *

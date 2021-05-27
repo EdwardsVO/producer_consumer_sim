@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package producer_consumer_sim;
+package administration;
 
 /**
  *
  * @author sebastian
  */
-public class ArmsProd {
+public class Boss {
     
 }

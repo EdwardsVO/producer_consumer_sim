@@ -1,5 +1,5 @@
 
-package producer_consumer_sim;
+package functions;
 
 import java.io.*;
 import java.util.logging.Level;

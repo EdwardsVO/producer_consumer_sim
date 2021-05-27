@@ -5,6 +5,7 @@
  */
 package producer_consumer_sim;
 
+import gui.Interfaz;
 import java.util.concurrent.Semaphore;
 /**
  *
