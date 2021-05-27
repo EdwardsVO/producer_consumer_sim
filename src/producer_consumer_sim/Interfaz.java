@@ -19,6 +19,8 @@ public class Interfaz extends javax.swing.JFrame {
     Almacen almacen = new Almacen(); //VARIABLES VOLATILES
     Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
     Time time = new Time(); //TIEMPO EN SIMULACION
+    
+    dataFunctions df = new dataFunctions();
 
     ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
 
@@ -227,6 +229,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
+            df.csvReader();;
             time.start(); //INICIALIZA EL TIEMPO
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
