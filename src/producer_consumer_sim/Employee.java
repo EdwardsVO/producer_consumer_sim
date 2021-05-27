@@ -17,22 +17,9 @@ import java.util.concurrent.Semaphore;
  */
 public class Employee extends Thread {
     
-    private Semaphore mutex;
-    private Semaphore semButtonProd;
-    private Semaphore semButtonCons;
-    private Semaphore buttProducer;
-    private Semaphore hireProducer;
-    private int ButtonsPerDay = 4;
-    private int cantProduc = 0;
-    private int prodButtonqtt = 0;
-    
-    public void run() {
+    public ButtonsProd hireProdEmployee(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         
-    }
-    
-    public ButtonsProd hireProdEmployee() {
-        
-        ButtonsProd bp = new ButtonsProd(hireProducer, buttProducer,  semButtonProd,  semButtonCons, mutex);
+        ButtonsProd bp = new ButtonsProd(semButtonProd,  semButtonCons, mutex, name);
         
         return bp;    
     }

@@ -6,6 +6,9 @@
 package producer_consumer_sim;
 
 import java.util.concurrent.Semaphore;
+import java.util.ArrayList;
+import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,16 +16,21 @@ import java.util.concurrent.Semaphore;
  */
 public class Interfaz extends javax.swing.JFrame {
 
-    Almacen almacen = new Almacen();
-    Producer_consumer_sim principal = new Producer_consumer_sim();
-    Time time = new Time();
+    Almacen almacen = new Almacen(); //VARIABLES VOLATILES
+    Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
+    Time time = new Time(); //TIEMPO EN SIMULACION
+
+    ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
 
     Semaphore mutex = new Semaphore(1);
-    Semaphore semButtonProd = new Semaphore(60);
-    Semaphore semButtonCons = new Semaphore(0);
-    Semaphore buttProducer = new Semaphore(4);
-    Semaphore hireProducer = new Semaphore(0);
+    //PROD - CONS ----> BOTONES
+    Semaphore semButtonProd = new Semaphore(60); //TOTAL DE BOTONES
+    Semaphore semButtonCons = new Semaphore(0); //CANTIDAD EN CONSUMO
     
+    //PROD - CONS ----> BRAZOS
+    
+    //ENSAMBLADORES
+
     public Interfaz() {
         initComponents();
     }
@@ -57,8 +65,9 @@ public class Interfaz extends javax.swing.JFrame {
         jSlider3 = new javax.swing.JSlider();
         jSlider4 = new javax.swing.JSlider();
         jSlider5 = new javax.swing.JSlider();
-        jButton1 = new javax.swing.JButton();
+        hireProdButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        initSimulation = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -170,16 +179,24 @@ public class Interfaz extends javax.swing.JFrame {
         jSlider5.setValue(1);
         jPanel1.add(jSlider5, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, 100, 20));
 
-        jButton1.setText("Contratar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hireProdButton.setText("Contratar");
+        hireProdButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hireProdButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
+        jPanel1.add(hireProdButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 170, -1, -1));
 
         jButton2.setText("Despedir");
         jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 170, -1, -1));
+
+        initSimulation.setText("INIT SIMULATION");
+        initSimulation.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                initSimulationActionPerformed(evt);
+            }
+        });
+        jPanel1.add(initSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 120, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,10 +212,27 @@ public class Interfaz extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void hireProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireProdButtonActionPerformed
+        try {
+            if(buttonsProdEmp.size() <= 4){ //LIMITE DE PRODUCTORES 
+            ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutex, String.valueOf(buttonsProdEmp.size()));
+            buttonsProdEmp.add(buttonProd);
+            System.out.println("Se ha agregado con exito");
+            }
+        } catch (Error e) {
+            JOptionPane.showMessageDialog(null, "Capacidad de productores alcanzada");
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+       }
+
+    }//GEN-LAST:event_hireProdButtonActionPerformed
+
+    private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
+            time.start(); //INICIALIZA EL TIEMPO
+            for (int i = 0; i < buttonsProdEmp.size(); i++) {
+                buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
+            
+        }
+    }//GEN-LAST:event_initSimulationActionPerformed
 
     /**
      * @param args the command line arguments
@@ -234,9 +268,10 @@ public class Interfaz extends javax.swing.JFrame {
             }
         });
     }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton hireProdButton;
+    private javax.swing.JButton initSimulation;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
