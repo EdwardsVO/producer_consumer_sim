@@ -22,24 +22,8 @@ import java.awt.Component;
  */
 public class Interfaz extends javax.swing.JFrame {
     
-    boolean onSim = false;
-
-    Almacen almacen = new Almacen(); //VARIABLES VOLATILES
-    Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
-    Time time = new Time(); //TIEMPO EN SIMULACION
-    
-    dataFunctions df = new dataFunctions();
-
-    ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
-
-    Semaphore mutex = new Semaphore(1);
-    //PROD - CONS ----> BOTONES
-    Semaphore semButtonProd = new Semaphore(60); //TOTAL DE BOTONES
-    Semaphore semButtonCons = new Semaphore(0); //CANTIDAD EN CONSUMO
-    
-    //PROD - CONS ----> BRAZOS
-    
-    //ENSAMBLADORES
+    main main = new main();
+    Almacen almacen = new Almacen();
 
     public Interfaz() {
         initComponents();
@@ -47,6 +31,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.setResizable(false);
         this.days.setText(String.valueOf(almacen.daysPassed));
         this.hours.setText(String.valueOf(almacen.hoursPassed));
+        this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
     }
 
     /**
@@ -67,8 +52,6 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTextPane3 = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -78,13 +61,15 @@ public class Interfaz extends javax.swing.JFrame {
         initSimulation = new javax.swing.JButton();
         stopSimulation = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
-        console = new javax.swing.JTextPane();
+        buttonProdQuantity = new javax.swing.JTextPane();
         jLabel9 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
         hours = new javax.swing.JTextPane();
         jScrollPane7 = new javax.swing.JScrollPane();
         days = new javax.swing.JTextPane();
         jLabel10 = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        console1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -131,15 +116,6 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 40, -1));
 
-        jScrollPane2.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setForeground(new java.awt.Color(204, 204, 204));
-
-        jTextPane2.setEditable(false);
-        jTextPane2.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane2.setViewportView(jTextPane2);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 270, 40, -1));
-
         jScrollPane3.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane3.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -185,10 +161,10 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(stopSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 50));
 
-        console.setEditable(false);
-        jScrollPane5.setViewportView(console);
+        buttonProdQuantity.setEditable(false);
+        jScrollPane5.setViewportView(buttonProdQuantity);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 300, 150));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 40, 30));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
@@ -210,6 +186,11 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel10.setText("HORAS");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, -1, -1));
 
+        console1.setEditable(false);
+        jScrollPane8.setViewportView(console1);
+
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 300, 150));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -225,48 +206,16 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hireProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireProdButtonActionPerformed
-        try {
-            if(buttonsProdEmp.size() < 4){ //LIMITE DE PRODUCTORES 
-            ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutex, String.valueOf(buttonsProdEmp.size()));
-            buttonsProdEmp.add(buttonProd);
-                for (int i = 0; i < buttonsProdEmp.size(); i++) {
-                    buttonsProdEmp.get(i).setButtonsPerDay(4 * buttonsProdEmp.size());
-                }
-            System.out.println("Se ha agregado con exito");
-            }else {
-                JOptionPane.showMessageDialog(null, "Capacidad de productores alcanzada");
-            }
-            
-        } catch (Error e) {
-            System.out.println(e);
-        
-       }
-
+       main.hireProdButton();
+       this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
-            this.onSim = true;
-            df.csvReader();
-            time.start(); //INICIALIZA EL TIEMPO
-            time.init();
-            for (int i = 0; i < buttonsProdEmp.size(); i++) {
-                buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
-                buttonsProdEmp.get(i).init();
-            
-        }
+            main.initSimulation();
     }//GEN-LAST:event_initSimulationActionPerformed
 
     private void stopSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopSimulationActionPerformed
-        System.out.println(this.onSim);
-        if(this.onSim == true){
-            time.kill();
-            for (int i = 0; i < buttonsProdEmp.size(); i++) {
-                buttonsProdEmp.get(i).kill(); // SE DETIENEN TODOS LOS PRODUCTORES
-            }
-            this.onSim = false;
-        }else {
-            JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
-        }
+        main.stopSimulation();
     }//GEN-LAST:event_stopSimulationActionPerformed
 
     /**
@@ -306,7 +255,8 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextPane console;
+    private javax.swing.JTextPane buttonProdQuantity;
+    private javax.swing.JTextPane console1;
     private javax.swing.JTextPane days;
     private javax.swing.JButton hireProdButton;
     private javax.swing.JTextPane hours;
@@ -322,14 +272,13 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane2;
     private javax.swing.JTextPane jTextPane3;
     private javax.swing.JTextPane jTextPane4;
     private javax.swing.JButton stopSimulation;
