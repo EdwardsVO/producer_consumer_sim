@@ -18,6 +18,7 @@ public class Time extends Thread {
         while (true) {
             while (Almacen.hoursPassed != 24) {
                 try {
+                    System.out.println("sirve...");
                     Thread.sleep(Almacen.dayEquiv / 24);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, ex);

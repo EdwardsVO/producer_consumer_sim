@@ -16,7 +16,7 @@ public class Producer_consumer_sim {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        gui interfaz = new gui();
+        Interfaz interfaz = new Interfaz();
         
         interfaz.setVisible(true);
     }
