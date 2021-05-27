@@ -19,21 +19,28 @@ public class ButtonsProd extends Thread {
     private Semaphore semButtonProd;
     private Semaphore semButtonCons;
     private Semaphore buttProducer;
+    private Semaphore hireProducer;
     private String name;
     private int ButtonsPerDay = 4;
 
-    public ButtonsProd(Semaphore buttProducer, Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
+    public ButtonsProd(Semaphore hireProducer, Semaphore buttProducer, Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
         this.semButtonProd = semButtonProd;
         this.semButtonCons = semButtonCons;
         this.name = name;
         this.buttProducer = buttProducer;
+        this.hireProducer = hireProducer;
     }
 
     public void run() {
+        try {
+            this.buttProducer.acquire();
+            this.hireProducer.release();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
+        }
         while (true) {
             try {
-                this.buttProducer.acquire();
                 this.semButtonProd.acquire();
                 this.mutex.acquire();
                 Almacen.contButtons++;
@@ -50,5 +57,10 @@ public class ButtonsProd extends Thread {
     
     public void byeProdButton(){
         this.buttProducer.release();
+        try {
+            this.hireProducer.acquire();
+        } catch (InterruptedException ex) {
+            Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
