@@ -17,8 +17,8 @@ import gui.main;
  *
  * @author sebastian
  */
-public class LegsProd extends Thread{
-    
+public class LegsProd extends Thread {
+
     private String name;
     private main main;
     private boolean start;
@@ -31,47 +31,53 @@ public class LegsProd extends Thread{
     private Time time;
     private String produced = "";
     private javax.swing.JTextPane console3;
-    
-    public LegsProd(Semaphore semLegsProd, Semaphore semLegsCons, Semaphore mutex, String name){
+    private javax.swing.JTextPane legsQuantity;
+
+    public LegsProd(Semaphore semLegsProd, Semaphore semLegsCons, Semaphore mutex, String name) {
         this.semLegsCons = semLegsCons;
         this.semLegsProd = semLegsProd;
         this.mutex = mutex;
         this.name = name;
     }
-    
+
     public void run() {
-        while(this.start){
-            while(this.cantProduc < 36) {
-                try{
-                    this.semLegsProd.acquire();
-                    this.mutex.acquire();
-                    
-                    Thread.sleep(Almacen.dayEquiv * 2);
-                    
-                    Almacen.contLegs++;
-                    this.cantProduc++;
-                    
-                    this.console3.setText("Productor " + this.name + " ha fabricado una pierna nueva, ahora hay " + Almacen.contLegs + " piernas en el almacen.");
-                    
-                    
-                    
-                    this.mutex.release();
-                    this.semLegsCons.release();
-                    
-                } catch (InterruptedException ex){
-                    Logger.getLogger(LegsProd.class.getName()).log(Level.SEVERE, null, ex);
+        while (Almacen.daysLeft > 0) {
+                while (Almacen.daysPassed % 2 == 0 && this.cantProduc != 1) {
+                    try {
+                        this.semLegsProd.acquire();
+                        this.mutex.acquire();
+
+                        //Thread.sleep(Almacen.dayEquiv * 2);
+                        Almacen.contLegs++;
+                        this.cantProduc++;
+
+                        this.console3.setText("Productor " + this.name + " ha fabricado una pierna nueva, ahora hay " + Almacen.contLegs + " piernas en el almacen.");
+                        this.legsQuantity.setText(String.valueOf(Almacen.contLegs));
+                        Thread.sleep(2 * (Almacen.dayEquiv) / this.LegsPerDay);
+
+                        this.mutex.release();
+                        this.semLegsCons.release();
+
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(LegsProd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
-//            if(Time.passed == true){
-//                this.cantProduc = 0;
-//            }
+                if (Time.passed == true) {
+                    this.cantProduc = 0;
+                }
+            
         }
+        this.stop();
     }
-    
+
     public void showProduced(javax.swing.JTextPane console3) {
         this.console3 = console3;
     }
-    
+
+    public void legsQuantity(javax.swing.JTextPane legsQuantity) {
+        this.legsQuantity = legsQuantity;
+    }
+
     public void init() {
         this.start = true;
     }
@@ -83,7 +89,5 @@ public class LegsProd extends Thread{
     public void setLegsPerDay(int LegsPerDay) {
         this.LegsPerDay = LegsPerDay;
     }
-    
-    
-    
+
 }

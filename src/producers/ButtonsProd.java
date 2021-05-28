@@ -31,6 +31,7 @@ public class ButtonsProd extends Thread {
     private Time time;
     private String produced = "";
     private javax.swing.JTextPane console1;
+    private javax.swing.JTextPane buttonQuantity;
 
     public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
@@ -40,32 +41,39 @@ public class ButtonsProd extends Thread {
     }
 
     public void run() {
-        while (this.start) {
-            while (this.cantProduc != 4) {
-                try {
-                    this.semButtonProd.acquire();
-                    this.mutex.acquire();
-                    Almacen.contButtons++;
-                    this.cantProduc++;
-                    this.console1.setText("Productor " + this.name + " ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
-                    Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
-                    
-                    this.mutex.release();
-                    this.semButtonCons.release();
+        while (Almacen.daysLeft > 0) {
+                while (this.cantProduc != 4) {
+                    try {
+                        this.semButtonProd.acquire();
+                        this.mutex.acquire();
+                        Almacen.contButtons++;
+                        this.cantProduc++;
+                        this.console1.setText("Productor " + this.name + " ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
+                        this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
+                        Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
 
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
+                        this.mutex.release();
+                        this.semButtonCons.release();
+
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
-            }
-            if(Time.passed == true) {
-                this.cantProduc = 0;
-            }
+                if (Time.passed == true) {
+                    this.cantProduc = 0;
+                }
+
             
         }
+       this.stop();
     }
-    
-    public void showProduced(javax.swing.JTextPane console1){ //AQUI
+
+    public void showProduced(javax.swing.JTextPane console1) { //AQUI
         this.console1 = console1;
+    }
+
+    public void buttonQuantity(javax.swing.JTextPane buttonQuantity) { //AQUI
+        this.buttonQuantity = buttonQuantity;
     }
 
     public void kill() {

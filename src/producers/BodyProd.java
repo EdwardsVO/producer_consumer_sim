@@ -5,7 +5,6 @@
  */
 package producers;
 
-
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,7 +17,8 @@ import gui.main;
  *
  * @author sebastian
  */
-public class BodyProd extends Thread{
+public class BodyProd extends Thread {
+
     private String name;
     private main main;
     private boolean start;
@@ -31,37 +31,50 @@ public class BodyProd extends Thread{
     private Time time;
     private String produced = "";
     private javax.swing.JTextPane console4;
-    
+    private javax.swing.JTextPane bodyQuantity;
+
     public BodyProd(Semaphore semBodyProd, Semaphore semBodyCons, Semaphore mutex, String name) {
         this.semBodyCons = semBodyCons;
         this.semBodyProd = semBodyProd;
         this.mutex = mutex;
         this.name = name;
     }
-    
+
     public void run() {
-        while(this.start) {
-            try{
-                this.semBodyProd.acquire();
-                this.mutex.acquire();
-                Almacen.contBody++;
-                this.cantProduc++;
-                this.console4.setText("Productor " + this.name + " ha fabricado un cuerpo central, ahora hay " + Almacen.contBody + " cuerpos centrales en el almacen.");
-                
-                Thread.sleep(Almacen.dayEquiv * 3);
-                
-                this.mutex.release();
-                this.semBodyCons.release();
-            } catch(InterruptedException ex) {
-                Logger.getLogger(BodyProd.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        while (Almacen.daysLeft > 0) {
+                while (Almacen.daysPassed % 2 != 0 && this.cantProduc != 1) {
+                    try {
+                        this.semBodyProd.acquire();
+                        this.mutex.acquire();
+                        Almacen.contBody++;
+                        this.cantProduc++;
+                        this.console4.setText("Productor " + this.name + " ha fabricado un cuerpo central, ahora hay " + Almacen.contBody + " cuerpos centrales en el almacen.");
+                        this.bodyQuantity.setText(String.valueOf(Almacen.contBody));
+                        //Thread.sleep(Almacen.dayEquiv * 3);
+
+                        this.mutex.release();
+                        this.semBodyCons.release();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(BodyProd.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+                if (Time.passed == true) {
+                    this.cantProduc = 0;
+                }
+            
         }
+        this.stop();
     }
-    
-    public void showProduced(javax.swing.JTextPane console4){ //AQUI
+
+    public void showProduced(javax.swing.JTextPane console4) { //AQUI
         this.console4 = console4;
     }
-    
+
+    public void bodyQuantity(javax.swing.JTextPane bodyQuantity) { //AQUI
+        this.bodyQuantity = bodyQuantity;
+    }
+
     public void init() {
         this.start = true;
     }
@@ -73,6 +86,5 @@ public class BodyProd extends Thread{
     public void setBodyPerDay(int BodyPerDay) {
         this.BodyPerDay = BodyPerDay;
     }
-    
-    
+
 }

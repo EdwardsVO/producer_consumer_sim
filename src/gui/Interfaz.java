@@ -31,6 +31,16 @@ public class Interfaz extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
+        this.armsProdQuantity1.setText(String.valueOf(main.armsProdEmp.size()));
+        this.legsProdQuantity1.setText(String.valueOf(main.legsProdEmp.size()));
+        this.bodyProdQuantity.setText(String.valueOf(main.bodyProdEmp.size()));
+        this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
+        this.armsQuantity.setText(String.valueOf(Almacen.contArms));
+        this.legsQuantity.setText(String.valueOf(Almacen.contLegs));
+        this.bodyQuantity1.setText(String.valueOf(Almacen.contBody));
+        this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
+        this.days.setText(String.valueOf(Almacen.daysPassed));
+        this.hours.setText(String.valueOf(Almacen.hoursPassed));
     }
     
     /**
@@ -49,14 +59,8 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        bodyProdQuantity = new javax.swing.JTextPane();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        armsProdQuantity = new javax.swing.JTextPane();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        legsProdQuantity = new javax.swing.JTextPane();
         hireProdButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        delAssem = new javax.swing.JButton();
         initSimulation = new javax.swing.JButton();
         stopSimulation = new javax.swing.JButton();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -71,13 +75,48 @@ public class Interfaz extends javax.swing.JFrame {
         console1 = new javax.swing.JTextPane();
         jScrollPane9 = new javax.swing.JScrollPane();
         console2 = new javax.swing.JTextPane();
-        jButton1 = new javax.swing.JButton();
+        hireArmsProd = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
         console3 = new javax.swing.JTextPane();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        hireLegsProd = new javax.swing.JButton();
+        hireAssem = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
         console4 = new javax.swing.JTextPane();
+        jScrollPane12 = new javax.swing.JScrollPane();
+        buttonQuantity = new javax.swing.JTextPane();
+        jScrollPane13 = new javax.swing.JScrollPane();
+        armsQuantity = new javax.swing.JTextPane();
+        jScrollPane14 = new javax.swing.JScrollPane();
+        legsQuantity = new javax.swing.JTextPane();
+        delButtonProd = new javax.swing.JButton();
+        delArmsProd = new javax.swing.JButton();
+        delLegsProd = new javax.swing.JButton();
+        jScrollPane15 = new javax.swing.JScrollPane();
+        daysLeft = new javax.swing.JTextPane();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jScrollPane16 = new javax.swing.JScrollPane();
+        totalPanas = new javax.swing.JTextPane();
+        hireBodyProd1 = new javax.swing.JButton();
+        delBodyProd1 = new javax.swing.JButton();
+        jScrollPane17 = new javax.swing.JScrollPane();
+        console5 = new javax.swing.JTextPane();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jScrollPane18 = new javax.swing.JScrollPane();
+        buttonProdQuantity2 = new javax.swing.JTextPane();
+        jScrollPane19 = new javax.swing.JScrollPane();
+        armsProdQuantity1 = new javax.swing.JTextPane();
+        jScrollPane20 = new javax.swing.JScrollPane();
+        legsProdQuantity1 = new javax.swing.JTextPane();
+        jScrollPane21 = new javax.swing.JScrollPane();
+        bodyProdQuantity = new javax.swing.JTextPane();
+        jScrollPane22 = new javax.swing.JScrollPane();
+        bodyQuantity1 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -92,55 +131,28 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("PRODUCTORES");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        jLabel4.setText("ENSAMBLADORES");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 190, 20));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel5.setText("Cuerpo");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, -1, -1));
+        jLabel5.setText("ALMACEN");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 400, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Botones");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Brazos");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Piernas");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
-
-        jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setForeground(new java.awt.Color(204, 204, 204));
-
-        bodyProdQuantity.setEditable(false);
-        bodyProdQuantity.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setViewportView(bodyProdQuantity);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 40, -1));
-
-        jScrollPane3.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane3.setForeground(new java.awt.Color(204, 204, 204));
-
-        armsProdQuantity.setEditable(false);
-        armsProdQuantity.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane3.setViewportView(armsProdQuantity);
-
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 40, -1));
-
-        jScrollPane4.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane4.setForeground(new java.awt.Color(204, 204, 204));
-
-        legsProdQuantity.setEditable(false);
-        legsProdQuantity.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane4.setViewportView(legsProdQuantity);
-
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 40, -1));
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
         hireProdButton.setText("Contratar");
         hireProdButton.addActionListener(new java.awt.event.ActionListener() {
@@ -148,10 +160,10 @@ public class Interfaz extends javax.swing.JFrame {
                 hireProdButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(hireProdButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, -1));
+        jPanel1.add(hireProdButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, 30));
 
-        jButton2.setText("Despedir");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 270, -1, -1));
+        delAssem.setText("Despedir");
+        jPanel1.add(delAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, 30));
 
         initSimulation.setText("INIT SIMULATION");
         initSimulation.addActionListener(new java.awt.event.ActionListener() {
@@ -172,97 +184,235 @@ public class Interfaz extends javax.swing.JFrame {
         buttonProdQuantity.setEditable(false);
         jScrollPane5.setViewportView(buttonProdQuantity);
 
-        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 40, 30));
+        jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 40, 30));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("DIAS");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 120, -1, -1));
+        jLabel9.setText("DIAS PARA ENTREGA");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
 
         hours.setEditable(false);
         jScrollPane6.setViewportView(hours);
 
-        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 70, 70, -1));
+        jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 70, -1));
 
         days.setEditable(false);
         jScrollPane7.setViewportView(days);
 
-        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 120, 70, -1));
+        jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 70, -1));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("HORAS");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
 
         console1.setEditable(false);
         console1.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jScrollPane8.setViewportView(console1);
 
-        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 270, 30));
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 270, 30));
 
         console2.setEditable(false);
         console2.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jScrollPane9.setViewportView(console2);
 
-        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 270, 30));
+        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 270, 30));
 
-        jButton1.setText("Contratar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hireArmsProd.setText("Contratar");
+        hireArmsProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hireArmsProdActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
+        jPanel1.add(hireArmsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, 30));
 
         console3.setEditable(false);
         console3.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jScrollPane10.setViewportView(console3);
 
-        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 270, 30));
+        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 270, 30));
 
-        jButton3.setText("Contratar");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        hireLegsProd.setText("Contratar");
+        hireLegsProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                hireLegsProdActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
+        jPanel1.add(hireLegsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, 30));
 
-        jButton4.setText("Contratar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        hireAssem.setText("Contratar");
+        hireAssem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                hireAssemActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
+        jPanel1.add(hireAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, -1, 30));
 
         console4.setEditable(false);
         console4.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jScrollPane11.setViewportView(console4);
 
-        jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 270, 30));
+        jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 270, 70));
+
+        buttonQuantity.setEditable(false);
+        jScrollPane12.setViewportView(buttonQuantity);
+
+        jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, 40, 30));
+
+        armsQuantity.setEditable(false);
+        jScrollPane13.setViewportView(armsQuantity);
+
+        jPanel1.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 40, 30));
+
+        legsQuantity.setEditable(false);
+        jScrollPane14.setViewportView(legsQuantity);
+
+        jPanel1.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 40, 30));
+
+        delButtonProd.setText("Despedir");
+        delButtonProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delButtonProdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delButtonProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, 30));
+
+        delArmsProd.setText("Despedir");
+        delArmsProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delArmsProdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delArmsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, 30));
+
+        delLegsProd.setText("Despedir");
+        delLegsProd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delLegsProdActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delLegsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, 30));
+
+        daysLeft.setEditable(false);
+        jScrollPane15.setViewportView(daysLeft);
+
+        jPanel1.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 70, -1));
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel11.setText("DIAS");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel12.setText("PRODUCTORES");
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 160, 20));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel13.setText("PANAS PRODUCIDOS");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
+
+        totalPanas.setEditable(false);
+        jScrollPane16.setViewportView(totalPanas);
+
+        jPanel1.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 450, 40, 30));
+
+        hireBodyProd1.setText("Contratar");
+        hireBodyProd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hireBodyProd1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(hireBodyProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, 30));
+
+        delBodyProd1.setText("Despedir");
+        delBodyProd1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delBodyProd1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(delBodyProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, 30));
+
+        console5.setEditable(false);
+        console5.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        jScrollPane17.setViewportView(console5);
+
+        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 270, 30));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel14.setText("Botones");
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel15.setText("Brazos");
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel16.setText("Piernas");
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel17.setText("Cuerpo");
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel18.setText("Cuerpo");
+        jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, -1, -1));
+
+        buttonProdQuantity2.setEditable(false);
+        jScrollPane18.setViewportView(buttonProdQuantity2);
+
+        jPanel1.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 40, 30));
+
+        armsProdQuantity1.setEditable(false);
+        jScrollPane19.setViewportView(armsProdQuantity1);
+
+        jPanel1.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 40, 30));
+
+        legsProdQuantity1.setEditable(false);
+        jScrollPane20.setViewportView(legsProdQuantity1);
+
+        jPanel1.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 40, 30));
+
+        bodyProdQuantity.setEditable(false);
+        jScrollPane21.setViewportView(bodyProdQuantity);
+
+        jPanel1.add(jScrollPane21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 40, 30));
+
+        bodyQuantity1.setEditable(false);
+        jScrollPane22.setViewportView(bodyQuantity1);
+
+        jPanel1.add(jScrollPane22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 926, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1057, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void hireProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireProdButtonActionPerformed
-       main.hireProdButton(this.console1);
+       main.hireProdButton(this.console1, this.buttonQuantity);
        this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
-          main.initSimulation(this.hours, this.days);
+          main.initSimulation(this.hours, this.days, this.daysLeft);
             
             
     }//GEN-LAST:event_initSimulationActionPerformed
@@ -271,22 +421,46 @@ public class Interfaz extends javax.swing.JFrame {
         main.stopSimulation();
     }//GEN-LAST:event_stopSimulationActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void hireArmsProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireArmsProdActionPerformed
         // TODO add your handling code here:
-        main.hireProdArms(this.console2);
-        this.armsProdQuantity.setText(String.valueOf(main.armsProdEmp.size()));
-    }//GEN-LAST:event_jButton1ActionPerformed
+        main.hireProdArms(this.console2, this.armsQuantity);
+        this.armsProdQuantity1.setText(String.valueOf(main.armsProdEmp.size()));
+    }//GEN-LAST:event_hireArmsProdActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void hireLegsProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireLegsProdActionPerformed
         // TODO add your handling code here:
-        main.hireProdLegs(this.console3);
-        this.legsProdQuantity.setText(String.valueOf(main.legsProdEmp.size()));
-    }//GEN-LAST:event_jButton3ActionPerformed
+        main.hireProdLegs(this.console3, this.legsQuantity);
+        this.legsProdQuantity1.setText(String.valueOf(main.legsProdEmp.size()));
+    }//GEN-LAST:event_hireLegsProdActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        main.hireProdBody(console4);
+    private void hireAssemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireAssemActionPerformed
+       
+    }//GEN-LAST:event_hireAssemActionPerformed
+
+    private void hireBodyProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireBodyProd1ActionPerformed
+        main.hireProdBody(console5, this.bodyQuantity1);
         this.bodyProdQuantity.setText(String.valueOf(main.bodyProdEmp.size()));
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_hireBodyProd1ActionPerformed
+
+    private void delButtonProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delButtonProdActionPerformed
+        main.deleteButtonProd();
+        this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
+    }//GEN-LAST:event_delButtonProdActionPerformed
+
+    private void delArmsProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delArmsProdActionPerformed
+        main.deleteArmsProd();
+        this.armsProdQuantity1.setText(String.valueOf(main.armsProdEmp.size()));
+    }//GEN-LAST:event_delArmsProdActionPerformed
+
+    private void delLegsProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delLegsProdActionPerformed
+        main.deleteLegsProd();
+        this.legsProdQuantity1.setText(String.valueOf(main.legsProdEmp.size()));
+    }//GEN-LAST:event_delLegsProdActionPerformed
+
+    private void delBodyProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delBodyProd1ActionPerformed
+        main.deleteBodyProd();
+        this.bodyProdQuantity.setText(String.valueOf(main.bodyProdEmp.size()));
+    }//GEN-LAST:event_delBodyProd1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,23 +499,42 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextPane armsProdQuantity;
+    private javax.swing.JTextPane armsProdQuantity1;
+    private javax.swing.JTextPane armsQuantity;
     private javax.swing.JTextPane bodyProdQuantity;
+    private javax.swing.JTextPane bodyQuantity1;
     private javax.swing.JTextPane buttonProdQuantity;
+    private javax.swing.JTextPane buttonProdQuantity2;
+    private javax.swing.JTextPane buttonQuantity;
     private javax.swing.JTextPane console1;
     private javax.swing.JTextPane console2;
     private javax.swing.JTextPane console3;
     private javax.swing.JTextPane console4;
+    private javax.swing.JTextPane console5;
     private javax.swing.JTextPane days;
+    private javax.swing.JTextPane daysLeft;
+    private javax.swing.JButton delArmsProd;
+    private javax.swing.JButton delAssem;
+    private javax.swing.JButton delBodyProd1;
+    private javax.swing.JButton delButtonProd;
+    private javax.swing.JButton delLegsProd;
+    private javax.swing.JButton hireArmsProd;
+    private javax.swing.JButton hireAssem;
+    private javax.swing.JButton hireBodyProd1;
+    private javax.swing.JButton hireLegsProd;
     private javax.swing.JButton hireProdButton;
     private javax.swing.JTextPane hours;
     private javax.swing.JButton initSimulation;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -349,17 +542,27 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane12;
+    private javax.swing.JScrollPane jScrollPane13;
+    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane jScrollPane15;
+    private javax.swing.JScrollPane jScrollPane16;
+    private javax.swing.JScrollPane jScrollPane17;
+    private javax.swing.JScrollPane jScrollPane18;
+    private javax.swing.JScrollPane jScrollPane19;
+    private javax.swing.JScrollPane jScrollPane20;
+    private javax.swing.JScrollPane jScrollPane21;
+    private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTextPane legsProdQuantity;
+    private javax.swing.JTextPane legsProdQuantity1;
+    private javax.swing.JTextPane legsQuantity;
     private javax.swing.JButton stopSimulation;
+    private javax.swing.JTextPane totalPanas;
     // End of variables declaration//GEN-END:variables
 }
