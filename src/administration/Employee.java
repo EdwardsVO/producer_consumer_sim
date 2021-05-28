@@ -9,7 +9,10 @@ package administration;
  
 
 import producers.ButtonsProd;
+import producers.ArmsProd;
+import producers.LegsProd;
 import java.util.concurrent.Semaphore;
+import producers.BodyProd;
 
 
 /**
@@ -23,6 +26,21 @@ public class Employee extends Thread {
         ButtonsProd bp = new ButtonsProd(semButtonProd,  semButtonCons, mutex, name);
         
         return bp;    
+    }
+    
+    public ArmsProd hireArmsProdEmloyee(Semaphore semArmProd, Semaphore semArmCons, Semaphore mutex, String name) {
+        ArmsProd ap = new ArmsProd(semArmProd, semArmCons, mutex, name);
+        return ap;
+    }
+    
+    public LegsProd hireLegsProdEmloyee(Semaphore semLegsProd, Semaphore semLegsCons, Semaphore mutex, String name) {
+        LegsProd lp = new LegsProd(semLegsProd, semLegsCons, mutex, name);
+        return lp;
+    }
+    
+     public BodyProd hireBodyProdEmloyee(Semaphore semBodyProd, Semaphore semBodyCons, Semaphore mutex, String name) {
+        BodyProd bodp = new BodyProd(semBodyProd, semBodyCons, mutex, name);
+        return bodp;
     }
     
 }

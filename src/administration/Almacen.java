@@ -12,13 +12,12 @@ package administration;
 public class Almacen {
     
     public static volatile int contButtons = 0;
-    
     public static volatile int contLegs = 0;
     public static volatile int contArms = 0;
     public static volatile int contBody = 0;
     public static volatile int hoursPassed = 0;
     public static volatile int daysPassed = 0;
-    public static volatile int dayEquiv = 2000; //Miliseconds
+    public static volatile int dayEquiv = 4000; //Miliseconds
     public static volatile int daysLeft = 0;
     
 }

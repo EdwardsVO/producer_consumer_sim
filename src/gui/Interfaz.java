@@ -50,11 +50,11 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
+        bodyProdQuantity = new javax.swing.JTextPane();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextPane3 = new javax.swing.JTextPane();
+        armsProdQuantity = new javax.swing.JTextPane();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTextPane4 = new javax.swing.JTextPane();
+        legsProdQuantity = new javax.swing.JTextPane();
         hireProdButton = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         initSimulation = new javax.swing.JButton();
@@ -69,6 +69,15 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         console1 = new javax.swing.JTextPane();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        console2 = new javax.swing.JTextPane();
+        jButton1 = new javax.swing.JButton();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        console3 = new javax.swing.JTextPane();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        console4 = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,29 +118,29 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane1.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane1.setForeground(new java.awt.Color(204, 204, 204));
 
-        jTextPane1.setEditable(false);
-        jTextPane1.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane1.setViewportView(jTextPane1);
+        bodyProdQuantity.setEditable(false);
+        bodyProdQuantity.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane1.setViewportView(bodyProdQuantity);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 410, 40, -1));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 410, 40, -1));
 
         jScrollPane3.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane3.setForeground(new java.awt.Color(204, 204, 204));
 
-        jTextPane3.setEditable(false);
-        jTextPane3.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane3.setViewportView(jTextPane3);
+        armsProdQuantity.setEditable(false);
+        armsProdQuantity.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane3.setViewportView(armsProdQuantity);
 
-        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 310, 40, -1));
+        jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 40, -1));
 
         jScrollPane4.setBackground(new java.awt.Color(204, 204, 204));
         jScrollPane4.setForeground(new java.awt.Color(204, 204, 204));
 
-        jTextPane4.setEditable(false);
-        jTextPane4.setBackground(new java.awt.Color(204, 204, 204));
-        jScrollPane4.setViewportView(jTextPane4);
+        legsProdQuantity.setEditable(false);
+        legsProdQuantity.setBackground(new java.awt.Color(204, 204, 204));
+        jScrollPane4.setViewportView(legsProdQuantity);
 
-        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 360, 40, -1));
+        jPanel1.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 360, 40, -1));
 
         hireProdButton.setText("Contratar");
         hireProdButton.addActionListener(new java.awt.event.ActionListener() {
@@ -186,9 +195,52 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, -1, -1));
 
         console1.setEditable(false);
+        console1.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
         jScrollPane8.setViewportView(console1);
 
-        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 170, 300, 150));
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 270, 270, 30));
+
+        console2.setEditable(false);
+        console2.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        jScrollPane9.setViewportView(console2);
+
+        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 310, 270, 30));
+
+        jButton1.setText("Contratar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, -1));
+
+        console3.setEditable(false);
+        console3.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        jScrollPane10.setViewportView(console3);
+
+        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 360, 270, 30));
+
+        jButton3.setText("Contratar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 360, -1, -1));
+
+        jButton4.setText("Contratar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 410, -1, -1));
+
+        console4.setEditable(false);
+        console4.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        jScrollPane11.setViewportView(console4);
+
+        jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 400, 270, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -218,6 +270,23 @@ public class Interfaz extends javax.swing.JFrame {
     private void stopSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopSimulationActionPerformed
         main.stopSimulation();
     }//GEN-LAST:event_stopSimulationActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        main.hireProdArms(this.console2);
+        this.armsProdQuantity.setText(String.valueOf(main.armsProdEmp.size()));
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        main.hireProdLegs(this.console3);
+        this.legsProdQuantity.setText(String.valueOf(main.legsProdEmp.size()));
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        main.hireProdBody(console4);
+        this.bodyProdQuantity.setText(String.valueOf(main.bodyProdEmp.size()));
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -256,13 +325,21 @@ public class Interfaz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextPane armsProdQuantity;
+    private javax.swing.JTextPane bodyProdQuantity;
     private javax.swing.JTextPane buttonProdQuantity;
     private javax.swing.JTextPane console1;
+    private javax.swing.JTextPane console2;
+    private javax.swing.JTextPane console3;
+    private javax.swing.JTextPane console4;
     private javax.swing.JTextPane days;
     private javax.swing.JButton hireProdButton;
     private javax.swing.JTextPane hours;
     private javax.swing.JButton initSimulation;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel4;
@@ -273,15 +350,16 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
-    private javax.swing.JTextPane jTextPane1;
-    private javax.swing.JTextPane jTextPane3;
-    private javax.swing.JTextPane jTextPane4;
+    private javax.swing.JScrollPane jScrollPane9;
+    private javax.swing.JTextPane legsProdQuantity;
     private javax.swing.JButton stopSimulation;
     // End of variables declaration//GEN-END:variables
 }
