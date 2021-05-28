@@ -24,16 +24,15 @@ public class Interfaz extends javax.swing.JFrame {
     
     main main = new main();
     Almacen almacen = new Almacen();
-
+    
+    
     public Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.days.setText(String.valueOf(almacen.daysPassed));
-        this.hours.setText(String.valueOf(almacen.hoursPassed));
         this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -206,12 +205,14 @@ public class Interfaz extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void hireProdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireProdButtonActionPerformed
-       main.hireProdButton();
+       main.hireProdButton(this.console1);
        this.buttonProdQuantity.setText(String.valueOf(main.buttonsProdEmp.size()));
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
-            main.initSimulation();
+          main.initSimulation(this.hours, this.days);
+            
+            
     }//GEN-LAST:event_initSimulationActionPerformed
 
     private void stopSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopSimulationActionPerformed

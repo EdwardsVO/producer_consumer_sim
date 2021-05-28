@@ -17,6 +17,13 @@ public class Time extends Thread {
     
     private boolean start;
     public static volatile boolean passed = false;
+    javax.swing.JTextPane hours;
+    javax.swing.JTextPane days;
+    
+    public Time(javax.swing.JTextPane hours, javax.swing.JTextPane days){
+        this.hours = hours;
+        this.days = days;
+    }
     
     public void run() {
         while (this.start) {
@@ -28,8 +35,11 @@ public class Time extends Thread {
                     Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 Almacen.hoursPassed++;
+                System.out.println(Almacen.hoursPassed);
+                this.hours.setText(String.valueOf(Almacen.hoursPassed));
             }
             Almacen.daysPassed++;
+            this.days.setText(String.valueOf(Almacen.daysPassed));
             Almacen.hoursPassed = 0;
             System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
             this.passed = true;
@@ -37,6 +47,14 @@ public class Time extends Thread {
         }
         
     }
+    
+    public void showDays(javax.swing.JTextPane console1){ //AQUI
+        this.days = console1;
+    }
+    public void showHours(javax.swing.JTextPane console1){ //AQUI
+        this.hours = console1;
+    }
+    
     
     public void kill(){
         this.start = false;

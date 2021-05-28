@@ -23,7 +23,8 @@ public class main {
 
     Almacen almacen = new Almacen(); //VARIABLES VOLATILES
     Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
-    Time time = new Time(); //TIEMPO EN SIMULACION
+   
+    
     
     dataFunctions df = new dataFunctions();
 
@@ -39,10 +40,11 @@ public class main {
     //ENSAMBLADORES
     
     
-     public void hireProdButton() {                                               
+     public void hireProdButton(javax.swing.JTextPane console1) {                                               
         try {
             if(buttonsProdEmp.size() < 4){ //LIMITE DE PRODUCTORES 
             ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutex, String.valueOf(buttonsProdEmp.size()));
+            buttonProd.showProduced(console1);
             buttonsProdEmp.add(buttonProd);
                 for (int i = 0; i < buttonsProdEmp.size(); i++) {
                     buttonsProdEmp.get(i).setButtonsPerDay(4 * buttonsProdEmp.size());
@@ -59,11 +61,10 @@ public class main {
 
     }                                              
 
-    public void initSimulation() {                                               
+    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days) {                                               
             this.onSim = true;
             df.csvReader();
-            time.start(); //INICIALIZA EL TIEMPO
-            time.init();
+            this.createTime(hours, days);
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
                 buttonsProdEmp.get(i).init();
@@ -74,7 +75,7 @@ public class main {
     public void stopSimulation() {                                               
         System.out.println(this.onSim);
         if(this.onSim == true){
-            time.kill();
+        
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).kill(); // SE DETIENEN TODOS LOS PRODUCTORES
             }
@@ -82,5 +83,15 @@ public class main {
         }else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
         }
-    }               
+    }
+    
+    public void createTime(javax.swing.JTextPane hours, javax.swing.JTextPane days){
+        Time time = new Time(hours, days);
+        time.start();
+        time.init();
+}
+    
+    
+     
+     
 }

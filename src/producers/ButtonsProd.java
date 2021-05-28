@@ -10,6 +10,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import administration.Almacen;
 import functions.Time;
+import gui.Interfaz;
+import gui.main;
 
 /**
  *
@@ -18,6 +20,7 @@ import functions.Time;
 public class ButtonsProd extends Thread {
 
     private String name;
+    private main main;
     private boolean start;
     private Almacen almacen;
     private Semaphore mutex;
@@ -26,6 +29,8 @@ public class ButtonsProd extends Thread {
     private int ButtonsPerDay = 4;
     private int cantProduc = 0;
     private Time time;
+    private String produced = "";
+    private javax.swing.JTextPane console1;
 
     public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
@@ -42,8 +47,9 @@ public class ButtonsProd extends Thread {
                     this.mutex.acquire();
                     Almacen.contButtons++;
                     this.cantProduc++;
-                    System.out.println("Productor " + this.name + " ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
+                    this.console1.setText("Productor " + this.name + " ha fabricado 1 boton, ahora hay " + Almacen.contButtons + " botones en el almacen.");
                     Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
+                    
                     this.mutex.release();
                     this.semButtonCons.release();
 
@@ -56,6 +62,10 @@ public class ButtonsProd extends Thread {
             }
             
         }
+    }
+    
+    public void showProduced(javax.swing.JTextPane console1){ //AQUI
+        this.console1 = console1;
     }
 
     public void kill() {
