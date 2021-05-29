@@ -39,7 +39,12 @@ public class Manager extends Thread {
                   this.reset = true;
               }
                   
-            }
+            } else { try {
+                Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+                }
+}
              if(this.reset == true) {
                  System.out.println("reseting");
                  Almacen.daysLeft = 20;
