@@ -17,6 +17,7 @@ import producers.ButtonsProd;
 import producers.ArmsProd;
 import producers.LegsProd;
 import producers.BodyProd;
+import administration.Manager;
 
 /**
  *
@@ -43,6 +44,7 @@ public class main {
     Semaphore mutexLegs = new Semaphore(1);
     Semaphore mutexBody = new Semaphore(1);
     Semaphore mutexAssem = new Semaphore (1);
+    Semaphore mutexPanas = new Semaphore(1);
     //PROD - CONS ----> BOTONES
     Semaphore semButtonProd = new Semaphore(60); //TOTAL DE BOTONES
     Semaphore semButtonCons = new Semaphore(0); //CANTIDAD EN CONSUMO
@@ -58,6 +60,9 @@ public class main {
     //PROD - CONS ----> CUERPO CENTRAL
     Semaphore semBodyProd = new Semaphore(15);
     Semaphore semBodyCons = new Semaphore(0);
+    
+
+    Manager manager = new Manager();
 
     //ENSAMBLADORES
     
@@ -197,25 +202,22 @@ public class main {
             this.createTime(hours, days, daysLeft);
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
-          
             }
             for (int i = 0; i < armsProdEmp.size(); i++) {
                 armsProdEmp.get(i).start();
-               
             }
 
             for (int i = 0; i < legsProdEmp.size(); i++) {
                 legsProdEmp.get(i).start();
-                
             }
             for (int i = 0; i < bodyProdEmp.size(); i++) {
                 bodyProdEmp.get(i).start();
-       
             }
             for (int i = 0; i < assemEmp.size(); i++) {
                 assemEmp.get(i).start();
-                
             }
+            
+            manager.start();
             
         }else {
             JOptionPane.showMessageDialog(null, "Simulacion Inicializada", "ERROR", 0);

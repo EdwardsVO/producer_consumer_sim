@@ -42,6 +42,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
         this.days.setText(String.valueOf(Almacen.daysPassed));
         this.hours.setText(String.valueOf(Almacen.hoursPassed));
+        this.totalPanasDistributed.setText(String.valueOf(Almacen.panasDistributed));
     }
     
     /**
@@ -118,6 +119,9 @@ public class Interfaz extends javax.swing.JFrame {
         bodyProdQuantity = new javax.swing.JTextPane();
         jScrollPane22 = new javax.swing.JScrollPane();
         bodyQuantity1 = new javax.swing.JTextPane();
+        jLabel19 = new javax.swing.JLabel();
+        jScrollPane23 = new javax.swing.JScrollPane();
+        totalPanasDistributed = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -316,13 +320,13 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel13.setText("PANAS PRODUCIDOS");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 450, -1, -1));
+        jLabel13.setText("PANAS DISTRIBUIDOS");
+        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, -1, -1));
 
         totalPanas.setEditable(false);
         jScrollPane16.setViewportView(totalPanas);
 
-        jPanel1.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 450, 40, 30));
+        jPanel1.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 430, 40, 30));
 
         hireBodyProd1.setText("Contratar");
         hireBodyProd1.addActionListener(new java.awt.event.ActionListener() {
@@ -395,6 +399,16 @@ public class Interfaz extends javax.swing.JFrame {
         jScrollPane22.setViewportView(bodyQuantity1);
 
         jPanel1.add(jScrollPane22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 40, 30));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel19.setText("PANAS PRODUCIDOS");
+        jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, -1, -1));
+
+        totalPanasDistributed.setEditable(false);
+        jScrollPane23.setViewportView(totalPanasDistributed);
+
+        jPanel1.add(jScrollPane23, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 490, 40, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -547,6 +561,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -567,6 +582,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane20;
     private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane22;
+    private javax.swing.JScrollPane jScrollPane23;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -576,5 +592,6 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextPane legsQuantity;
     private javax.swing.JButton stopSimulation;
     private javax.swing.JTextPane totalPanas;
+    private javax.swing.JTextPane totalPanasDistributed;
     // End of variables declaration//GEN-END:variables
 }
