@@ -38,6 +38,7 @@ public class Interfaz extends javax.swing.JFrame {
         this.armsQuantity.setText(String.valueOf(Almacen.contArms));
         this.legsQuantity.setText(String.valueOf(Almacen.contLegs));
         this.bodyQuantity1.setText(String.valueOf(Almacen.contBody));
+        this.assemQ.setText(String.valueOf(Almacen.panasBuilt));
         this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
         this.days.setText(String.valueOf(Almacen.daysPassed));
         this.hours.setText(String.valueOf(Almacen.hoursPassed));
@@ -81,7 +82,7 @@ public class Interfaz extends javax.swing.JFrame {
         hireLegsProd = new javax.swing.JButton();
         hireAssem = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
-        console4 = new javax.swing.JTextPane();
+        consolee = new javax.swing.JTextPane();
         jScrollPane12 = new javax.swing.JScrollPane();
         buttonQuantity = new javax.swing.JTextPane();
         jScrollPane13 = new javax.swing.JScrollPane();
@@ -108,7 +109,7 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane18 = new javax.swing.JScrollPane();
-        buttonProdQuantity2 = new javax.swing.JTextPane();
+        assemQ = new javax.swing.JTextPane();
         jScrollPane19 = new javax.swing.JScrollPane();
         armsProdQuantity1 = new javax.swing.JTextPane();
         jScrollPane20 = new javax.swing.JScrollPane();
@@ -124,10 +125,10 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Gill Sans MT Condensed", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("MATTEL PANA'S PRODUCTION");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 20, -1, 30));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 560, 40));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
@@ -163,6 +164,11 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(hireProdButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, 30));
 
         delAssem.setText("Despedir");
+        delAssem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delAssemActionPerformed(evt);
+            }
+        });
         jPanel1.add(delAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, 30));
 
         initSimulation.setText("INIT SIMULATION");
@@ -248,9 +254,9 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(hireAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, -1, 30));
 
-        console4.setEditable(false);
-        console4.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
-        jScrollPane11.setViewportView(console4);
+        consolee.setEditable(false);
+        consolee.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        jScrollPane11.setViewportView(consolee);
 
         jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 270, 70));
 
@@ -365,8 +371,8 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel18.setText("Cuerpo");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, -1, -1));
 
-        buttonProdQuantity2.setEditable(false);
-        jScrollPane18.setViewportView(buttonProdQuantity2);
+        assemQ.setEditable(false);
+        jScrollPane18.setViewportView(assemQ);
 
         jPanel1.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 40, 30));
 
@@ -434,7 +440,8 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_hireLegsProdActionPerformed
 
     private void hireAssemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireAssemActionPerformed
-       
+        main.hireAssembler(totalPanas, consolee);
+        this.assemQ.setText(String.valueOf(main.assemEmp.size()));
     }//GEN-LAST:event_hireAssemActionPerformed
 
     private void hireBodyProd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireBodyProd1ActionPerformed
@@ -461,6 +468,11 @@ public class Interfaz extends javax.swing.JFrame {
         main.deleteBodyProd();
         this.bodyProdQuantity.setText(String.valueOf(main.bodyProdEmp.size()));
     }//GEN-LAST:event_delBodyProd1ActionPerformed
+
+    private void delAssemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delAssemActionPerformed
+        main.delAssembler();
+        this.assemQ.setText(String.valueOf(main.assemEmp.size()));       
+    }//GEN-LAST:event_delAssemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -501,16 +513,16 @@ public class Interfaz extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextPane armsProdQuantity1;
     private javax.swing.JTextPane armsQuantity;
+    private javax.swing.JTextPane assemQ;
     private javax.swing.JTextPane bodyProdQuantity;
     private javax.swing.JTextPane bodyQuantity1;
     private javax.swing.JTextPane buttonProdQuantity;
-    private javax.swing.JTextPane buttonProdQuantity2;
     private javax.swing.JTextPane buttonQuantity;
     private javax.swing.JTextPane console1;
     private javax.swing.JTextPane console2;
     private javax.swing.JTextPane console3;
-    private javax.swing.JTextPane console4;
     private javax.swing.JTextPane console5;
+    private javax.swing.JTextPane consolee;
     private javax.swing.JTextPane days;
     private javax.swing.JTextPane daysLeft;
     private javax.swing.JButton delArmsProd;

@@ -19,5 +19,6 @@ public class Almacen {
     public static volatile int daysPassed = 0;
     public static volatile int dayEquiv = 500; //Miliseconds
     public static volatile int daysLeft = 20;
+    public static volatile int panasBuilt = 0;
     
 }

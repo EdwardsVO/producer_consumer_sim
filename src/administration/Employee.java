@@ -42,5 +42,10 @@ public class Employee extends Thread {
         BodyProd bodp = new BodyProd(semBodyProd, semBodyCons, mutex, name);
         return bodp;
     }
+     
+     public Assembler hireAssembler(Semaphore semConsButton, Semaphore semProdButton, Semaphore semProdArms, Semaphore semConsArms, Semaphore semProdLegs, Semaphore semConsLegs, Semaphore semProdBody, Semaphore semConsBody, String name, Semaphore mutex){
+        Assembler a = new Assembler(semConsButton, semProdButton, semProdArms, semConsArms,semProdLegs, semConsLegs, semProdBody,semConsBody,name, mutex);
+        return a;
+     }
     
 }
