@@ -218,6 +218,7 @@ public class main {
             }
             
             manager.start();
+           
             
         }else {
             JOptionPane.showMessageDialog(null, "Simulacion Inicializada", "ERROR", 0);
@@ -229,7 +230,18 @@ public class main {
     public void stopSimulation() {
         if (this.onSim == true) {
             Almacen.daysLeft = 0;
-            this.onSim = false;
+//            this.onSim = false;
+            
+            for (int i = 0; i < buttonsProdEmp.size(); i++) {
+                try{
+                System.out.println("Se ha detenido el productor de botones.");
+                buttonsProdEmp.get(i).interrupt(); // SE INICIALIZAN TODOS LOS PRODUCTORES
+                } catch(Error e) {
+                    System.out.println(e);
+                }
+            }
+            
+            
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
         }

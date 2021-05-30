@@ -32,6 +32,7 @@ public class ButtonsProd extends Thread {
     private String produced = "";
     private javax.swing.JTextPane console1;
     private javax.swing.JTextPane buttonQuantity;
+    private boolean exit;
 
     public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
@@ -41,6 +42,7 @@ public class ButtonsProd extends Thread {
     }
 
     public void run() {
+        while(!exit){
         while (Almacen.daysLeft > 0) {
                 while (this.cantProduc != 4) {
                     try {
@@ -50,6 +52,7 @@ public class ButtonsProd extends Thread {
                         this.cantProduc++;
                         this.console1.setText("Productor " + this.name + " ha fabricado 1 boton");
                         this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
+                        
                         Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
 
                         this.mutex.release();
@@ -66,6 +69,7 @@ public class ButtonsProd extends Thread {
             
         }
        this.stop();
+    }
     }
 
     public void showProduced(javax.swing.JTextPane console1) { //AQUI
@@ -98,6 +102,11 @@ public class ButtonsProd extends Thread {
 
     public void setCantProduc(int cantProduc) {
         this.cantProduc = cantProduc;
+    }
+    
+    public void stopSim() {
+        System.out.println("Se ha detenido el productor de botones");
+        this.exit = true;
     }
 
 }
