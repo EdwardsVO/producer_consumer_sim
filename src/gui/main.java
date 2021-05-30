@@ -7,6 +7,7 @@ package gui;
 
 import administration.Almacen;
 import administration.Assembler;
+import administration.Boss;
 import administration.Employee;
 import functions.Time;
 import functions.dataFunctions;
@@ -45,6 +46,8 @@ public class main {
     Semaphore mutexBody = new Semaphore(1);
     Semaphore mutexAssem = new Semaphore (1);
     Semaphore mutexPanas = new Semaphore(1);
+    Semaphore mutexAdmin = new Semaphore(1);
+    
     //PROD - CONS ----> BOTONES
     Semaphore semButtonProd = new Semaphore(60); //TOTAL DE BOTONES
     Semaphore semButtonCons = new Semaphore(0); //CANTIDAD EN CONSUMO
@@ -62,7 +65,8 @@ public class main {
     Semaphore semBodyCons = new Semaphore(0);
     
 
-    Manager manager = new Manager();
+    Manager manager = new Manager(mutexAdmin);
+    Boss boss = new Boss(mutexAdmin);
 
     //ENSAMBLADORES
     
@@ -149,6 +153,7 @@ public class main {
                 bodyProdEmp.add(bodyProd);
                 for (int i = 0; i < bodyProdEmp.size(); i++) {
                     bodyProdEmp.get(i).setBodyPerDay((1 * bodyProdEmp.size()));
+                    System.out.println(bodyProdEmp.get(i).getState());
                 }
                 System.out.println("Se ha agregado un productor de cuerpo central con exito.");
             } else {
@@ -218,39 +223,86 @@ public class main {
             }
             
             manager.start();
+            boss.start();
            
             
         }else {
             JOptionPane.showMessageDialog(null, "Simulacion Inicializada", "ERROR", 0);
 
         }
+        
     }
     
 
     public void stopSimulation() {
         if (this.onSim == true) {
+            
+            try{
             Almacen.daysLeft = 0;
-//            this.onSim = false;
+            this.onSim = false;
             
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 try{
-                System.out.println("Se ha detenido el productor de botones.");
-                buttonsProdEmp.get(i).interrupt(); // SE INICIALIZAN TODOS LOS PRODUCTORES
+                    System.out.println("Se ha detenido el productor de botones.");
+                    buttonsProdEmp.get(i).stop(); // SE INICIALIZAN TODOS LOS PRODUCTORES
+                } catch(Error e) {
+                    System.out.println(e);
+                }
+            }
+            
+            for(int i = 0; i < armsProdEmp.size(); i++) {
+                try{
+                    System.out.println("Se ha detenido el productor de brazos.");
+                    armsProdEmp.get(i).stop();
                 } catch(Error e) {
                     System.out.println(e);
                 }
             }
             
             for (int i = 0; i < legsProdEmp.size(); i++) {
-                    legsProdEmp.get(i).interrupt();
+                try{
+                    System.out.println("Se ha detenido el productor de piernas.");
+                    legsProdEmp.get(i).stop();
+                } catch (Error e){
+                    System.out.println(e);
                 }
+                
+            }
+            
+            for (int i = 0; i < bodyProdEmp.size(); i++) {
+                try{
+                    System.out.println("Se ha detenido el productor de cuerpos.");
+                    bodyProdEmp.get(i).stop();
+                } catch(Error e ) {
+                    System.out.println(e);
+                }
+                
+            }
+            
+            for (int i = 0; i < assemEmp.size(); i++) {
+                try{
+                    System.out.println("Se ha detenido el ensamblador.");
+                    assemEmp.get(i).stop();
+                } catch(Error e) {
+                    System.out.println(e);
+                }
+                
+            }
+            
+            manager.stop();
+            boss.stop();
             
             
+            
+            } catch(Error e){
+                System.out.println(e);
+            }
             
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
         }
     }
+    
 
     public void createTime(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
         Time time = new Time(hours, days, daysLeft);

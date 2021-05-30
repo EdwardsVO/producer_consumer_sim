@@ -22,39 +22,43 @@ public class Manager extends Thread {
     javax.swing.JTextPane panasBuilt;
     private boolean reset = false;
     private boolean exit;
+    private Semaphore mutexAdmin;
+    private int distributed;
 
 
     
-    public Manager() {
-        
+    public Manager(Semaphore mutexAdmin) {
+        this.mutexAdmin = mutexAdmin;
     }
     
     public void run() {
-        while(!exit) {
+        while(true) {
+            try {
+                this.mutexAdmin.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
             if(Almacen.daysLeft == 0) {
-              while(Almacen.panasBuilt > 0) {
-                  Almacen.panasDistributed += 1;
-                  Almacen.panasBuilt -= 1;
-                  System.out.println("Se ha distribuido un pana, ahora quedan: " + Almacen.panasBuilt);
-                  System.out.println("Panas Distribuidos: " + Almacen.panasDistributed);
-                  this.reset = true;
-                  this.exit = true;
-              }
-                  
-            } else { try {
-                Thread.sleep(1000);
+                this.distributed += Almacen.panasBuilt;
+                Almacen.panasBuilt = 0;
+                System.out.println("Se han distribuido " + this.distributed + " panas, ahora quedan " + Almacen.panasBuilt + " en el almacen.");
+
+                // Esto crashea.
+//                this.panasDistributed.setText(String.valueOf(this.distributed));
+
+                Almacen.daysLeft = 20;
+                Almacen.daysPassed = 0;
+                this.mutexAdmin.release();
+            } else {
+                this.mutexAdmin.release();
+                try {
+                    Thread.sleep(Almacen.dayEquiv/3);
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
                 }
-}
-             if(this.reset == true) {
-                 System.out.println("reseting");
-                 Almacen.daysLeft = 20;
-                 Almacen.daysPassed = 0;
-                 this.reset = false;
-                 this.exit = false;
-                 
-             }
+            }
         }
     }
+    
+    
 }

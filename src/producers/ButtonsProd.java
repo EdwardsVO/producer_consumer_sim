@@ -67,9 +67,11 @@ public class ButtonsProd extends Thread {
                 }
 
             
+            }
+        this.exit = true;
+       
         }
-       this.stop();
-    }
+        
     }
 
     public void showProduced(javax.swing.JTextPane console1) { //AQUI

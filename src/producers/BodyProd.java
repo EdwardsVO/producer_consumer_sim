@@ -64,7 +64,9 @@ public class BodyProd extends Thread {
                 }
             
         }
+        
         this.stop();
+
     }
 
     public void showProduced(javax.swing.JTextPane console4) { //AQUI

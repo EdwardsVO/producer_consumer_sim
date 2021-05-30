@@ -25,7 +25,7 @@ public class Employee extends Thread {
         
         ButtonsProd bp = new ButtonsProd(semButtonProd,  semButtonCons, mutex, name);
         
-        return bp;    
+        return bp;
     }
     
     public ArmsProd hireArmsProdEmloyee(Semaphore semArmProd, Semaphore semArmCons, Semaphore mutex, String name) {

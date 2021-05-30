@@ -38,13 +38,14 @@ public class ArmsProd extends Thread {
     }
 
     public void run() {
-        while (Almacen.daysLeft > 0) {
+        while (true) {
                 while (this.cantArmsProduc != 1) {
                     try {
                         this.semArmProd.acquire();
                         this.mutex.acquire();
 
 //                    Thread.sleep(Almacen.dayEquiv/ArmsPerDay);
+
                         Almacen.contArms++;
                         this.cantArmsProduc++;
 
@@ -64,7 +65,7 @@ public class ArmsProd extends Thread {
                 }
             
         }
-        this.stop();
+
 
     }
 

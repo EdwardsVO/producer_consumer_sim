@@ -48,6 +48,7 @@ public class LegsProd extends Thread {
                         this.mutex.acquire();
 
                         //Thread.sleep(Almacen.dayEquiv * 2);
+                        
                         Almacen.contLegs++;
                         this.cantProduc++;
 
@@ -67,7 +68,7 @@ public class LegsProd extends Thread {
                 }
             
         }
-        this.stop();
+    
     }
 
     public void showProduced(javax.swing.JTextPane console3) {
