@@ -21,6 +21,7 @@ public class Manager extends Thread {
     javax.swing.JTextPane panasDistributed;
     javax.swing.JTextPane panasBuilt;
     private boolean reset = false;
+    private boolean exit;
 
 
     
@@ -29,7 +30,7 @@ public class Manager extends Thread {
     }
     
     public void run() {
-        while(true) {
+        while(!exit) {
             if(Almacen.daysLeft == 0) {
               while(Almacen.panasBuilt > 0) {
                   Almacen.panasDistributed += 1;
@@ -37,6 +38,7 @@ public class Manager extends Thread {
                   System.out.println("Se ha distribuido un pana, ahora quedan: " + Almacen.panasBuilt);
                   System.out.println("Panas Distribuidos: " + Almacen.panasDistributed);
                   this.reset = true;
+                  this.exit = true;
               }
                   
             } else { try {
@@ -50,6 +52,8 @@ public class Manager extends Thread {
                  Almacen.daysLeft = 20;
                  Almacen.daysPassed = 0;
                  this.reset = false;
+                 this.exit = false;
+                 
              }
         }
     }

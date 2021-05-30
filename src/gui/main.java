@@ -241,6 +241,11 @@ public class main {
                 }
             }
             
+            for (int i = 0; i < legsProdEmp.size(); i++) {
+                    legsProdEmp.get(i).interrupt();
+                }
+            
+            
             
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
