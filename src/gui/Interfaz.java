@@ -55,6 +55,7 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        printPanas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -128,6 +129,14 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        printPanas.setText("PRINT");
+        printPanas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                printPanasActionPerformed(evt);
+            }
+        });
+        jPanel1.add(printPanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT Condensed", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -432,7 +441,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
-          main.initSimulation(this.hours, this.days, this.daysLeft, this.totalPanasDistributed);
+          main.initSimulation(this.hours, this.days, this.daysLeft, this.totalPanasDistributed, this.totalPanas);
             
             
     }//GEN-LAST:event_initSimulationActionPerformed
@@ -487,6 +496,10 @@ public class Interfaz extends javax.swing.JFrame {
         main.delAssembler();
         this.assemQ.setText(String.valueOf(main.assemEmp.size()));       
     }//GEN-LAST:event_delAssemActionPerformed
+
+    private void printPanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printPanasActionPerformed
+        System.out.println(Almacen.panasBuilt);
+    }//GEN-LAST:event_printPanasActionPerformed
 
     /**
      * @param args the command line arguments
@@ -590,6 +603,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextPane legsProdQuantity1;
     private javax.swing.JTextPane legsQuantity;
+    private javax.swing.JButton printPanas;
     private javax.swing.JButton stopSimulation;
     private javax.swing.JTextPane totalPanas;
     private javax.swing.JTextPane totalPanasDistributed;

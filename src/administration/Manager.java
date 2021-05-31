@@ -45,6 +45,7 @@ public class Manager extends Thread {
 
                 // Esto crashea.
                 this.panasDistributed.setText(String.valueOf(this.distributed));
+                this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
 
                 Almacen.daysLeft = 20;
                 Almacen.daysPassed = 0;
@@ -60,8 +61,9 @@ public class Manager extends Thread {
         }
     }
     
-    public void showDistributed(javax.swing.JTextPane panasDistributed){
+    public void showDistributed(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt){
         this.panasDistributed = panasDistributed;
+        this.panasBuilt = panasBuilt;
     }
     
     

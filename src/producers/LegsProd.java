@@ -38,10 +38,11 @@ public class LegsProd extends Thread {
         this.semLegsProd = semLegsProd;
         this.mutex = mutex;
         this.name = name;
+        this.start = true;
     }
 
     public void run() {
-        while (Almacen.daysLeft > 0) {
+        while (start) {
                 while (Almacen.daysPassed % 2 == 0 && this.cantProduc != 1) {
                     try {
                         this.semLegsProd.acquire();

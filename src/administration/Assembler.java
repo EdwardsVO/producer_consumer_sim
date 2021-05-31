@@ -29,6 +29,7 @@ public class Assembler extends Thread {
 
     private String name;
     private Almacen almacen;
+    private boolean start;
     private int panasPerDay = 1;
     private int cantPanasProduc = 0;
     javax.swing.JTextPane panasBuilt;
@@ -45,11 +46,12 @@ public class Assembler extends Thread {
         this.semConsBody = semConsBody;
         this.mutex = mutex;
         this.name = name;
+        this.start = true;
     }
 
     public void run() {
-        while (Almacen.daysLeft > 0) {
-            while (cantPanasProduc != 1) {
+        while (start) {
+           // while (cantPanasProduc != 1) {
                 try {
                     semConsButton.acquire(8);
                     semConsArms.acquire(2);
@@ -77,7 +79,7 @@ public class Assembler extends Thread {
             if (Time.passed == true) {
                     this.cantPanasProduc = 0;
         }}
-    }
+   // }
 
     public void showPanas(javax.swing.JTextPane panasBuilt) {
         this.panasBuilt = panasBuilt;

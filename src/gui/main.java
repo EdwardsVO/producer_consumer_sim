@@ -67,11 +67,11 @@ public class main {
 
     
 
-    public void startAdministration(javax.swing.JTextPane panasDistributed){
+    public void startAdministration(javax.swing.JTextPane panasDistributed,javax.swing.JTextPane panasBuilt){
         Manager manager = new Manager(mutexAdmin);
         Boss boss = new Boss(mutexAdmin);
         
-        manager.showDistributed(panasDistributed);
+        manager.showDistributed(panasDistributed, panasBuilt);
         manager.start();
         //boss.start();
         
@@ -207,11 +207,11 @@ public class main {
     
     
 
-    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed) {
+    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt) {
         if (this.onSim == false) {
             this.onSim = true;
             df.csvReader();
-            this.startAdministration(panasDistributed); //FALTA EL BOSS
+            this.startAdministration(panasDistributed, panasBuilt); //FALTA EL BOSS
             this.createTime(hours, days, daysLeft);
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES

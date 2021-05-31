@@ -38,19 +38,20 @@ public class BodyProd extends Thread {
         this.semBodyProd = semBodyProd;
         this.mutex = mutex;
         this.name = name;
+        this.start = true;
     }
 
     public void run() {
-        while (Almacen.daysLeft > 0) {
+        while (start) {
                 while (Almacen.daysPassed % 2 != 0 && this.cantProduc != 1) {
                     try {
                         this.semBodyProd.acquire();
                         this.mutex.acquire();
                         Almacen.contBody++;
                         this.cantProduc++;
-                        this.console4.setText("Productor " + this.name + " ha fabricado un cuerpo central, ahora hay " + Almacen.contBody + " cuerpos centrales en el almacen.");
+                        this.console4.setText("Productor " + this.name + " ha fabricado un cuerpo central");
                         this.bodyQuantity.setText(String.valueOf(Almacen.contBody));
-                        //Thread.sleep(Almacen.dayEquiv * 3);
+                        Thread.sleep(Almacen.dayEquiv * 3);
 
                         this.mutex.release();
                         this.semBodyCons.release();
