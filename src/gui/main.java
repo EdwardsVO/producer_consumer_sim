@@ -65,10 +65,17 @@ public class main {
     Semaphore semBodyCons = new Semaphore(0);
     
 
-    Manager manager = new Manager(mutexAdmin);
-    Boss boss = new Boss(mutexAdmin);
+    
 
-    //ENSAMBLADORES
+    public void startAdministration(javax.swing.JTextPane panasDistributed){
+        Manager manager = new Manager(mutexAdmin);
+        Boss boss = new Boss(mutexAdmin);
+        
+        manager.showDistributed(panasDistributed);
+        manager.start();
+        //boss.start();
+        
+    }
     
     public void hireAssembler(javax.swing.JTextPane panasBuilt, javax.swing.JTextPane console){
         if(assemEmp.size() < 5){
@@ -200,10 +207,11 @@ public class main {
     
     
 
-    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
+    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed) {
         if (this.onSim == false) {
             this.onSim = true;
             df.csvReader();
+            this.startAdministration(panasDistributed); //FALTA EL BOSS
             this.createTime(hours, days, daysLeft);
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
@@ -221,9 +229,6 @@ public class main {
             for (int i = 0; i < assemEmp.size(); i++) {
                 assemEmp.get(i).start();
             }
-            
-            manager.start();
-            boss.start();
            
             
         }else {
@@ -234,7 +239,7 @@ public class main {
     }
     
 
-    public void stopSimulation() {
+    public void stopSimulation() { //ARREGLAR
         if (this.onSim == true) {
             
             try{
@@ -289,8 +294,7 @@ public class main {
                 
             }
             
-            manager.stop();
-            boss.stop();
+            
             
             
             

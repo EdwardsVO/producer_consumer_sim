@@ -41,10 +41,10 @@ public class Manager extends Thread {
             if(Almacen.daysLeft == 0) {
                 this.distributed += Almacen.panasBuilt;
                 Almacen.panasBuilt = 0;
-                System.out.println("Se han distribuido " + this.distributed + " panas, ahora quedan " + Almacen.panasBuilt + " en el almacen.");
+                //System.out.println("Se han distribuido " + this.distributed + " panas, ahora quedan " + Almacen.panasBuilt + " en el almacen.");
 
                 // Esto crashea.
-//                this.panasDistributed.setText(String.valueOf(this.distributed));
+                this.panasDistributed.setText(String.valueOf(this.distributed));
 
                 Almacen.daysLeft = 20;
                 Almacen.daysPassed = 0;
@@ -58,6 +58,10 @@ public class Manager extends Thread {
                 }
             }
         }
+    }
+    
+    public void showDistributed(javax.swing.JTextPane panasDistributed){
+        this.panasDistributed = panasDistributed;
     }
     
     

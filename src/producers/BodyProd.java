@@ -61,11 +61,8 @@ public class BodyProd extends Thread {
                 }
                 if (Time.passed == true) {
                     this.cantProduc = 0;
-                }
-            
+                }   
         }
-        
-        this.stop();
 
     }
 

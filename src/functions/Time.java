@@ -25,9 +25,11 @@ public class Time extends Thread {
         this.hours = hours;
         this.days = days;
         this.daysLeft = daysLeft;
+        this.start = true;
     }
 
     public void run() {
+        while (start) {
             while (Almacen.daysLeft > 0) {
                 while (Almacen.hoursPassed != 24) {
                     try {
@@ -47,8 +49,9 @@ public class Time extends Thread {
                 Almacen.hoursPassed = 0;
                 System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
                 this.passed = true;
+            }
+            //
         }
-            this.stop();
     }
 
     public void showDays(javax.swing.JTextPane console1) { //AQUI
