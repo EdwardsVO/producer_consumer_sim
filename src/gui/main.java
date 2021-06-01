@@ -58,6 +58,13 @@ public class main {
     Semaphore semBodyProd = new Semaphore(15);
     Semaphore semBodyCons = new Semaphore(0);
     
+    //
+    javax.swing.JTextPane buttonsProdu;
+    javax.swing.JTextPane armsProdu;
+    javax.swing.JTextPane legsProdu;
+    javax.swing.JTextPane bodyProdu;
+    javax.swing.JTextPane assemQ;
+    
 
     
 
@@ -200,7 +207,13 @@ public class main {
     
     
 
-    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane console1, javax.swing.JTextPane buttonQuantity, javax.swing.JTextPane console2, javax.swing.JTextPane armsQuantity, javax.swing.JTextPane console3, javax.swing.JTextPane legsQuantity, javax.swing.JTextPane console4, javax.swing.JTextPane bodyQuantity, javax.swing.JTextPane console) {
+    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane console1, javax.swing.JTextPane buttonQuantity, javax.swing.JTextPane console2, javax.swing.JTextPane armsQuantity, javax.swing.JTextPane console3, javax.swing.JTextPane legsQuantity, javax.swing.JTextPane console4, javax.swing.JTextPane bodyQuantity, javax.swing.JTextPane console, javax.swing.JTextPane buttonsProdu, javax.swing.JTextPane armsProdu, javax.swing.JTextPane legsProdu, javax.swing.JTextPane bodyProdu, javax.swing.JTextPane assemQ) {
+        this.armsProdu = armsProdu; 
+        this.legsProdu = legsProdu;
+        this.bodyProdu = bodyProdu;
+        this.buttonsProdu = buttonsProdu;
+        this.assemQ = assemQ;
+        
         if (this.onSim == false) {
             this.onSim = true;
             this.startAdministration(panasDistributed, panasBuilt, tandas, daysLeft); //FALTA EL BOSS
@@ -213,8 +226,11 @@ public class main {
                     ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() + 1));
                     buttonProd.showProduced(console1);
                     buttonProd.buttonQuantity(buttonQuantity);
-                    buttonsProdEmp.add(buttonProd);
+                    this.buttonsProdu.setText(String.valueOf(i + 1));
+                    buttonsProdEmp.add(buttonProd);  
+                    
                 }
+                
                 for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
             }
@@ -233,6 +249,7 @@ public class main {
                     ArmsProd armsProd = emp.hireArmsProdEmloyee(semArmsProd, semArmsCons, mutexArms, String.valueOf(armsProdEmp.size() + 1));
                     armsProd.showProduced(console2);
                     armsProd.armsQuantity(armsQuantity);
+                    this.armsProdu.setText(String.valueOf(i +1));
                     armsProdEmp.add(armsProd);
                 }
                 for (int i = 0; i < armsProdEmp.size(); i++) {
@@ -252,6 +269,7 @@ public class main {
                     LegsProd legsProd = emp.hireLegsProdEmloyee(semLegsProd, semLegsCons, mutexLegs, String.valueOf(legsProdEmp.size() + 1));
                     legsProd.showProduced(console3);
                     legsProd.legsQuantity(legsQuantity);
+                    this.legsProdu.setText(String.valueOf(i +1));
                     legsProdEmp.add(legsProd);
                 }
                 
@@ -272,6 +290,7 @@ public class main {
                 BodyProd bodyProd = emp.hireBodyProdEmloyee(semBodyProd, semBodyCons, mutexBody, String.valueOf(bodyProdEmp.size() + 1));
                 bodyProd.showProduced(console4);
                 bodyProd.bodyQuantity(bodyQuantity);
+                this.bodyProdu.setText(String.valueOf(i +1));
                 bodyProdEmp.add(bodyProd);
                 
             }
@@ -294,6 +313,7 @@ public class main {
                     Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem, mutexButtons, mutexArms, mutexLegs, mutexBody);
                     assem.showWork(console);
                     assem.showPanas(panasBuilt);
+                    this.assemQ.setText(String.valueOf(i + 1));
                     assemEmp.add(assem);
                     
                 }

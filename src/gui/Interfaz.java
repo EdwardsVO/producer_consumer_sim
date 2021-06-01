@@ -447,7 +447,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
-          main.initSimulation(this.hours, this.days, this.daysLeft1, this.totalPanasDistributed, this.totalPanas, this.tandas, this.console1, this.buttonQuantity, this.console2, this.armsQuantity, this.console3, this.legsQuantity, this.console5, this.bodyQuantity1, this.consolee);
+          main.initSimulation(this.hours, this.days, this.daysLeft1, this.totalPanasDistributed, this.totalPanas, this.tandas, this.console1, this.buttonQuantity, this.console2, this.armsQuantity, this.console3, this.legsQuantity, this.console5, this.bodyQuantity1, this.consolee, this.buttonProdQuantity, this.armsProdQuantity1, this.legsProdQuantity1, this.bodyProdQuantity, this.assemQ);
             
     }//GEN-LAST:event_initSimulationActionPerformed
 

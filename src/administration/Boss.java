@@ -37,11 +37,10 @@ public class Boss extends Thread {
                 Thread.sleep(Almacen.dayEquiv / 3);
                 Almacen.daysLeft--;
                 mutexAdmin.release();
+                this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
             } catch (InterruptedException ex) {
                 Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
-            System.out.println(Almacen.daysLeft);
+            }          
         }
 
     }
