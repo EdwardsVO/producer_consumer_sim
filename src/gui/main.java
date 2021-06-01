@@ -71,12 +71,12 @@ public class main {
 
     public void startAdministration(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane daysLeft){
         Manager manager = new Manager(mutexAdmin);
-        Boss boss = new Boss(mutexAdmin);
+        //Boss boss = new Boss(mutexAdmin);
         
         manager.showDistributed(panasDistributed, panasBuilt, tandas);
-        boss.showDaysLeft(daysLeft);
+        //boss.showDaysLeft(daysLeft);
         manager.start();    
-        boss.start();
+        //boss.start();
     }
     
     public void hireAssembler(javax.swing.JTextPane panasBuilt, javax.swing.JTextPane console){
@@ -310,7 +310,7 @@ public class main {
     }
     
     public void createTime(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
-        Time time = new Time(hours, days, daysLeft);
+        Time time = new Time(hours, days, daysLeft, mutexAdmin);
         time.start();
         time.init();
     }
