@@ -42,8 +42,7 @@ public class ButtonsProd extends Thread {
     }
 
     public void run() {
-        while(!exit){
-        while (Almacen.daysLeft > 0) {
+        while(true){
                 while (this.cantProduc != 4) {
                     try {
                         this.semButtonProd.acquire();
@@ -65,13 +64,7 @@ public class ButtonsProd extends Thread {
                 if (Time.passed == true) {
                     this.cantProduc = 0;
                 }
-
-            
             }
-        this.exit = true;
-       
-        }
-        
     }
 
     public void showProduced(javax.swing.JTextPane console1) { //AQUI
@@ -104,11 +97,6 @@ public class ButtonsProd extends Thread {
 
     public void setCantProduc(int cantProduc) {
         this.cantProduc = cantProduc;
-    }
-    
-    public void stopSim() {
-        System.out.println("Se ha detenido el productor de botones");
-        this.exit = true;
     }
 
 }

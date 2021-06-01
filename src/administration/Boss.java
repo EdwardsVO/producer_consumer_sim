@@ -33,8 +33,8 @@ public class Boss extends Thread{
             if(Almacen.daysLeft > 0) {
                 try {
                     Thread.sleep(Almacen.dayEquiv/3);
-                    // Se esta restando 4 porque choca con Time.
-//                     Almacen.daysLeft-= 1;
+//                     Se esta restando 4 porque choca con Time.
+                     Almacen.daysLeft-= 1;
                      this.mutexAdmin.release();
                 } catch (InterruptedException ex) {
                     Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);

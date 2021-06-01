@@ -443,7 +443,6 @@ public class Interfaz extends javax.swing.JFrame {
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
           main.initSimulation(this.hours, this.days, this.daysLeft, this.totalPanasDistributed, this.totalPanas);
             
-            
     }//GEN-LAST:event_initSimulationActionPerformed
 
     private void stopSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopSimulationActionPerformed

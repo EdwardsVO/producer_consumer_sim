@@ -33,6 +33,8 @@ public class main {
     
 
     dataFunctions df = new dataFunctions();
+    
+    public String[] array = this.readData();
 
     ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
     ArrayList<ArmsProd> armsProdEmp = new ArrayList<>(); //PRODUCTORES DE BRAZOS MAXIMOS
@@ -72,13 +74,12 @@ public class main {
         Boss boss = new Boss(mutexAdmin);
         
         manager.showDistributed(panasDistributed, panasBuilt);
-        manager.start();
-        //boss.start();
-        
+        manager.start();    
+//        boss.start();
     }
     
     public void hireAssembler(javax.swing.JTextPane panasBuilt, javax.swing.JTextPane console){
-        if(assemEmp.size() < 5){
+        if(assemEmp.size() < Integer.valueOf(this.array[15])){
             Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem );
             assem.showWork(console);
             assem.showPanas(panasBuilt);
@@ -93,7 +94,7 @@ public class main {
     
     public void hireProdButton(javax.swing.JTextPane console1, javax.swing.JTextPane buttonQuantity) {
         try {
-            if (buttonsProdEmp.size() < 4) { //LIMITE DE PRODUCTORES 
+            if (buttonsProdEmp.size() < Integer.valueOf(this.array[10])) { //LIMITE DE PRODUCTORES 
                 ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() + 1));
                 buttonProd.showProduced(console1);
                 buttonProd.buttonQuantity(buttonQuantity);
@@ -115,7 +116,7 @@ public class main {
 
     public void hireProdArms(javax.swing.JTextPane console2, javax.swing.JTextPane armsQuantity) {
         try {
-            if (armsProdEmp.size() < 5) {
+            if (armsProdEmp.size() < Integer.valueOf(this.array[11])) {
                 ArmsProd armsProd = emp.hireArmsProdEmloyee(semArmsProd, semArmsCons, mutexArms, String.valueOf(armsProdEmp.size() + 1));
                 armsProd.showProduced(console2);
                 armsProd.armsQuantity(armsQuantity);
@@ -134,7 +135,7 @@ public class main {
 
     public void hireProdLegs(javax.swing.JTextPane console3, javax.swing.JTextPane legsQuantity) {
         try {
-            if (legsProdEmp.size() < 4) {
+            if (legsProdEmp.size() < Integer.valueOf(this.array[12])) {
                 LegsProd legsProd = emp.hireLegsProdEmloyee(semLegsProd, semLegsCons, mutexLegs, String.valueOf(legsProdEmp.size() + 1));
                 legsProd.showProduced(console3);
                 legsProd.legsQuantity(legsQuantity);
@@ -153,7 +154,7 @@ public class main {
 
     public void hireProdBody(javax.swing.JTextPane console4, javax.swing.JTextPane bodyQuantity) {
         try {
-            if (bodyProdEmp.size() < 4) {
+            if (bodyProdEmp.size() < Integer.valueOf(this.array[13])) {
                 BodyProd bodyProd = emp.hireBodyProdEmloyee(semBodyProd, semBodyCons, mutexBody, String.valueOf(bodyProdEmp.size() + 1));
                 bodyProd.showProduced(console4);
                 bodyProd.bodyQuantity(bodyQuantity);
@@ -229,6 +230,9 @@ public class main {
             for (int i = 0; i < assemEmp.size(); i++) {
                 assemEmp.get(i).start();
             }
+            
+            
+            
            
             
         }else {
@@ -243,13 +247,13 @@ public class main {
         if (this.onSim == true) {
             
             try{
-            Almacen.daysLeft = 0;
+            Almacen.daysLeft = 0; 
             this.onSim = false;
             
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 try{
                     System.out.println("Se ha detenido el productor de botones.");
-                    buttonsProdEmp.get(i).stop(); // SE INICIALIZAN TODOS LOS PRODUCTORES
+                    buttonsProdEmp.get(i).stop(); // SE DETIENEN TODOS LOS PRODUCTORES
                 } catch(Error e) {
                     System.out.println(e);
                 }
@@ -292,12 +296,9 @@ public class main {
                     System.out.println(e);
                 }
                 
+                
+                
             }
-            
-            
-            
-            
-            
             } catch(Error e){
                 System.out.println(e);
             }
@@ -307,11 +308,16 @@ public class main {
         }
     }
     
-
     public void createTime(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
         Time time = new Time(hours, days, daysLeft);
         time.start();
         time.init();
+    }
+    
+    public String[] readData() {
+        String data = df.csvReader();
+        this.array = data.split(",");
+        return this.array; 
     }
 
 }

@@ -78,8 +78,9 @@ public class Assembler extends Thread {
             }
             if (Time.passed == true) {
                     this.cantPanasProduc = 0;
-        }}
-   // }
+        }
+    }
+
 
     public void showPanas(javax.swing.JTextPane panasBuilt) {
         this.panasBuilt = panasBuilt;

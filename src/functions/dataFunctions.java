@@ -8,26 +8,25 @@ import java.util.logging.Logger;
 
 public class dataFunctions {
     
-    public void csvReader() {
+    public String csvReader() {
+        String content = "";
      
-            String path = "./test/data.csv";
-            String line = "";
+            String csvFile = "./test/data.csv";
+            String line = " ";
     
         try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
+            BufferedReader br = new BufferedReader(new FileReader(csvFile));
             
             while((line = br.readLine()) != null) {
                 
                 String[] data = line.split(",");
+                content += line + "\n";
             }
-            
     } catch(FileNotFoundException e) {
         e.printStackTrace();
-        
     } catch (IOException e) {
         e.printStackTrace();
     }
+        return content;
     }
-    
-    
 }

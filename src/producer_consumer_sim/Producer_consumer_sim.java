@@ -6,7 +6,8 @@
 package producer_consumer_sim;
 
 import gui.Interfaz;
-import java.util.concurrent.Semaphore;
+import functions.dataFunctions;
+import gui.main;
 /**
  *
  * @author Edward Vergel
@@ -17,9 +18,17 @@ public class Producer_consumer_sim {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        main main = new main();
+        
+//        main.readData();
+//        System.out.println(Integer.parseInt(main.array[15]));
+              
         Interfaz interfaz = new Interfaz();
         
         interfaz.setVisible(true);
+        
+        
     }
     
 }

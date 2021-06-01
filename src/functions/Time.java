@@ -50,7 +50,7 @@ public class Time extends Thread {
                 System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
                 this.passed = true;
             }
-            //
+            
         }
     }
 
