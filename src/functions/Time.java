@@ -29,7 +29,7 @@ public class Time extends Thread {
     public void run() {
         while (start) {
             while (Almacen.daysLeft > 0) {
-                while (Almacen.hoursPassed != 24) {
+                while (Almacen.hoursPassed < 24) {
                     try {
                         this.passed = false;
                         Thread.sleep(Almacen.dayEquiv / 24);
@@ -42,20 +42,8 @@ public class Time extends Thread {
                 }
                 Almacen.daysPassed++;
                 this.days.setText(String.valueOf(Almacen.daysPassed));
-                try {
-                    mutexAdmin.acquire(); //BOSS WORKING
-                    Thread.sleep(Almacen.dayEquiv / 3);
-                    Almacen.daysLeft --;
-                    mutexAdmin.release();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                    
-                this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
                 Almacen.hoursPassed = 0;
                  this.passed = true;
-
-                System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
             }
             
         }

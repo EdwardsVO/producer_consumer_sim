@@ -63,12 +63,11 @@ public class main {
 
     public void startAdministration(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane daysLeft){
         Manager manager = new Manager(mutexAdmin);
-        //Boss boss = new Boss(mutexAdmin);
+        Boss boss = new Boss(mutexAdmin, daysLeft, this.currentTime);
         
         manager.showDistributed(panasDistributed, panasBuilt, tandas);
-        //boss.showDaysLeft(daysLeft);
-        manager.start();    
-        //boss.start();
+        manager.start(); 
+        boss.start();
     }
     
     public void hireAssembler(javax.swing.JTextPane panasBuilt, javax.swing.JTextPane console){

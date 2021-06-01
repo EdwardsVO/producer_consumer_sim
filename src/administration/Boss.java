@@ -5,6 +5,7 @@
  */
 package administration;
 
+import functions.Time;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,40 +18,31 @@ public class Boss extends Thread {
 
     private Semaphore mutexAdmin;
     javax.swing.JTextPane daysLeft;
+    Time time;
 
-    private boolean calling = false;
+    private boolean start = true;
 
-    public Boss(Semaphore mutexAdmin) {
+    public Boss(Semaphore mutexAdmin, javax.swing.JTextPane daysLeft, Time time) {
         this.mutexAdmin = mutexAdmin;
+        this.daysLeft = daysLeft;
+        this.time = time;
     }
 
     public void run() {
-        while (true) {
+        while (start) {
             try {
-                this.mutexAdmin.acquire();
+                //Thread.sleep(2*(Almacen.dayEquiv/3));
+                Thread.sleep(2*(Almacen.dayEquiv/3));
+                mutexAdmin.acquire(); //BOSS WORKING
+                Thread.sleep(Almacen.dayEquiv / 3);
+                Almacen.daysLeft--;
+                mutexAdmin.release();
             } catch (InterruptedException ex) {
-                Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Time.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (Almacen.daysLeft > 0) {
-                try {
-//                     Se esta restando 4 porque choca con Time.
-                    Almacen.daysLeft -= 1;
-                    this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
-                    Thread.sleep(Almacen.dayEquiv / 3);
-                    this.mutexAdmin.release();
-                    
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Boss.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            } else {
-                this.mutexAdmin.release();
-            }
+            this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
+            System.out.println(Almacen.daysLeft);
         }
-    }
 
-    public void showDaysLeft(javax.swing.JTextPane daysLeft) {
-        this.daysLeft = daysLeft;
     }
-
 }
