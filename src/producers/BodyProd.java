@@ -51,6 +51,10 @@ public class BodyProd extends Thread {
                         this.cantProduc++;
                         this.console4.setText("Productor " + this.name + " ha fabricado un cuerpo central");
                         this.bodyQuantity.setText(String.valueOf(Almacen.contBody));
+                        
+                                                System.out.println("\n Cantidad de Cuerpos en el almacen: " + Almacen.contBody + "\n");
+
+                        
                         Thread.sleep(Almacen.dayEquiv * 3);
 
                         this.mutex.release();

@@ -81,7 +81,7 @@ public class main {
     
     public void hireAssembler(javax.swing.JTextPane panasBuilt, javax.swing.JTextPane console){
         if(assemEmp.size() < Integer.valueOf(this.array[15])){
-            Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem );
+            Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem, mutexButtons, mutexArms, mutexLegs, mutexBody);
             assem.showWork(console);
             assem.showPanas(panasBuilt);
             assemEmp.add(assem);
@@ -162,7 +162,7 @@ public class main {
                 bodyProdEmp.add(bodyProd);
                 for (int i = 0; i < bodyProdEmp.size(); i++) {
                     bodyProdEmp.get(i).setBodyPerDay((1 * bodyProdEmp.size()));
-                    System.out.println(bodyProdEmp.get(i).getState());
+                    
                 }
                 System.out.println("Se ha agregado un productor de cuerpo central con exito.");
             } else {

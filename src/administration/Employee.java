@@ -43,8 +43,8 @@ public class Employee extends Thread {
         return bodp;
     }
      
-     public Assembler hireAssembler(Semaphore semConsButton, Semaphore semProdButton, Semaphore semProdArms, Semaphore semConsArms, Semaphore semProdLegs, Semaphore semConsLegs, Semaphore semProdBody, Semaphore semConsBody, String name, Semaphore mutex){
-        Assembler a = new Assembler(semConsButton, semProdButton, semProdArms, semConsArms,semProdLegs, semConsLegs, semProdBody,semConsBody,name, mutex);
+     public Assembler hireAssembler(Semaphore semConsButton, Semaphore semProdButton, Semaphore semProdArms, Semaphore semConsArms, Semaphore semProdLegs, Semaphore semConsLegs, Semaphore semProdBody, Semaphore semConsBody, String name, Semaphore mutex, Semaphore mutexButtons, Semaphore mutexArms, Semaphore mutexLegs, Semaphore mutexBody){
+        Assembler a = new Assembler(semConsButton, semProdButton, semProdArms, semConsArms,semProdLegs, semConsLegs, semProdBody,semConsBody,name, mutex, mutexButtons, mutexArms, mutexLegs, mutexBody);
         return a;
      }
     

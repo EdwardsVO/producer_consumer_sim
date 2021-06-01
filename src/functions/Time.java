@@ -62,8 +62,9 @@ public class Time extends Thread {
                     
                 this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
                 Almacen.hoursPassed = 0;
+                 this.passed = true;
+
                 System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
-                this.passed = true;
             }
             
         }

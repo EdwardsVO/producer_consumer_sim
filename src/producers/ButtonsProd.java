@@ -44,7 +44,7 @@ public class ButtonsProd extends Thread {
 
     public void run() {
         while(start){
-                while (this.cantProduc != 4) {
+                while (this.cantProduc < 4) {
                     try {
                         this.semButtonProd.acquire();
                         this.mutex.acquire();
@@ -56,6 +56,8 @@ public class ButtonsProd extends Thread {
 //                        Thread.State state = Thread.currentThread().getState();
 //                        System.out.println(state);
                         
+                                                System.out.println("\n Cantidad de botones en el almacen: " + Almacen.contButtons + "\n");
+
                         Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
                         
                         this.mutex.release();
