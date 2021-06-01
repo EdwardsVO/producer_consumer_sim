@@ -94,7 +94,7 @@ public class main {
                 for (int i = 0; i < buttonsProdEmp.size(); i++) {
                     buttonsProdEmp.get(i).setButtonsPerDay(4 * buttonsProdEmp.size());
                 }
-                System.out.println("Se ha agregado con exito");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Capacidad de productores de botones alcanzada");
             }
@@ -116,7 +116,7 @@ public class main {
                 for (int i = 0; i < armsProdEmp.size(); i++) {
                     armsProdEmp.get(i).setArmsPerDay(1 * armsProdEmp.size());
                 }
-                System.out.println("Se ha agregado un productor de brazos con exito.");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Capacidad de productores de brazos alcanzada");
             }
@@ -135,7 +135,7 @@ public class main {
                 for (int i = 0; i < legsProdEmp.size(); i++) {
                     legsProdEmp.get(i).setLegsPerDay(1 * legsProdEmp.size());
                 }
-                System.out.println("Se ha agregado un productor de piernas con exito.");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Capacidad de productores de piernas alcanzada");
             }
@@ -155,7 +155,7 @@ public class main {
                     bodyProdEmp.get(i).setBodyPerDay((1 * bodyProdEmp.size()));
                     
                 }
-                System.out.println("Se ha agregado un productor de cuerpo central con exito.");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Capacidad de productores de cuerpo central alcanzada");
             }
@@ -200,32 +200,114 @@ public class main {
     
     
 
-    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas) {
+    public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane console1, javax.swing.JTextPane buttonQuantity, javax.swing.JTextPane console2, javax.swing.JTextPane armsQuantity, javax.swing.JTextPane console3, javax.swing.JTextPane legsQuantity, javax.swing.JTextPane console4, javax.swing.JTextPane bodyQuantity, javax.swing.JTextPane console) {
         if (this.onSim == false) {
             this.onSim = true;
-//            df.csvReader();
             this.startAdministration(panasDistributed, panasBuilt, tandas, daysLeft); //FALTA EL BOSS
             this.createTime(hours, days, daysLeft);
-            for (int i = 0; i < buttonsProdEmp.size(); i++) {
+            
+            if(buttonsProdEmp.size() < Integer.parseInt(this.array[6])) {
+                buttonsProdEmp.clear();
+                for(int i = 0; i < Integer.parseInt(this.array[6]); i++){
+
+                    ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() + 1));
+                    buttonProd.showProduced(console1);
+                    buttonProd.buttonQuantity(buttonQuantity);
+                    buttonsProdEmp.add(buttonProd);
+                }
+                for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
             }
-            for (int i = 0; i < armsProdEmp.size(); i++) {
-                armsProdEmp.get(i).start();
-            }
-
-            for (int i = 0; i < legsProdEmp.size(); i++) {
-                legsProdEmp.get(i).start();
-            }
-            for (int i = 0; i < bodyProdEmp.size(); i++) {
-                bodyProdEmp.get(i).start();
-            }
-            for (int i = 0; i < assemEmp.size(); i++) {
-                assemEmp.get(i).start();
+                
+            } else {
+            
+                for (int i = 0; i < buttonsProdEmp.size(); i++) {
+                    buttonsProdEmp.get(i).start(); // SE INICIALIZAN TODOS LOS PRODUCTORES
+                }
             }
             
+            if(armsProdEmp.size() < Integer.parseInt(this.array[7])) {
+                armsProdEmp.clear();
+                
+                for (int i = 0; i < Integer.parseInt(this.array[7]); i++) {
+                    ArmsProd armsProd = emp.hireArmsProdEmloyee(semArmsProd, semArmsCons, mutexArms, String.valueOf(armsProdEmp.size() + 1));
+                    armsProd.showProduced(console2);
+                    armsProd.armsQuantity(armsQuantity);
+                    armsProdEmp.add(armsProd);
+                }
+                for (int i = 0; i < armsProdEmp.size(); i++) {
+                    armsProdEmp.get(i).start();
+                }
+                
+            } else {
+                for (int i = 0; i < armsProdEmp.size(); i++) {
+                    armsProdEmp.get(i).start();
+                }
+            }
+            
+            if(legsProdEmp.size() < Integer.parseInt(this.array[8])) {
+                legsProdEmp.clear();
+                
+                for (int i = 0; i < Integer.parseInt(this.array[8]); i++) {
+                    LegsProd legsProd = emp.hireLegsProdEmloyee(semLegsProd, semLegsCons, mutexLegs, String.valueOf(legsProdEmp.size() + 1));
+                    legsProd.showProduced(console3);
+                    legsProd.legsQuantity(legsQuantity);
+                    legsProdEmp.add(legsProd);
+                }
+                
+                for (int i = 0; i < legsProdEmp.size(); i++) {
+                    legsProdEmp.get(i).start();
+                }
+            } else {
+                for (int i = 0; i < legsProdEmp.size(); i++) {
+                    legsProdEmp.get(i).start();
+                }
+            }
+            
+            if(bodyProdEmp.size() < Integer.parseInt(this.array[9])) {
+                bodyProdEmp.clear();
             
             
-           
+            for (int i = 0; i < Integer.parseInt(this.array[9]); i++) {
+                BodyProd bodyProd = emp.hireBodyProdEmloyee(semBodyProd, semBodyCons, mutexBody, String.valueOf(bodyProdEmp.size() + 1));
+                bodyProd.showProduced(console4);
+                bodyProd.bodyQuantity(bodyQuantity);
+                bodyProdEmp.add(bodyProd);
+                
+            }
+            
+                for(int i = 0; i < bodyProdEmp.size(); i++) {
+                    bodyProdEmp.get(i).start();
+                }
+            
+            } else {
+            
+                for (int i = 0; i < bodyProdEmp.size(); i++) {
+                    bodyProdEmp.get(i).start();
+                }
+            }
+            
+            if(assemEmp.size() < Integer.parseInt(this.array[14])) {
+                assemEmp.clear();
+                
+                for (int i = 0; i < Integer.parseInt(this.array[14]); i++) {
+                    Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem, mutexButtons, mutexArms, mutexLegs, mutexBody);
+                    assem.showWork(console);
+                    assem.showPanas(panasBuilt);
+                    assemEmp.add(assem);
+                    
+                }
+                
+                for (int i = 0; i < assemEmp.size(); i++) {
+                    assemEmp.get(i).start();
+                    
+                }
+                
+            } else {
+                for (int i = 0; i < assemEmp.size(); i++) {
+                    assemEmp.get(i).start();
+                }
+            }
             
         }else {
             JOptionPane.showMessageDialog(null, "Simulacion Inicializada", "ERROR", 0);
@@ -287,9 +369,6 @@ public class main {
                 } catch(Error e) {
                     System.out.println(e);
                 }
-                
-                
-                
             }
             
             this.currentTime.stop();
