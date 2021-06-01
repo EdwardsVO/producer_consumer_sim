@@ -28,6 +28,8 @@ public class main {
     public String[] array = this.readData();
     
     Time currentTime;
+    
+    Boss currentBoss;
 
     ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
     ArrayList<ArmsProd> armsProdEmp = new ArrayList<>(); //PRODUCTORES DE BRAZOS MAXIMOS
@@ -71,6 +73,7 @@ public class main {
     public void startAdministration(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane daysLeft){
         Manager manager = new Manager(mutexAdmin);
         Boss boss = new Boss(mutexAdmin, daysLeft, this.currentTime);
+        this.currentBoss = boss;
         
         manager.showDistributed(panasDistributed, panasBuilt, tandas);
         manager.start(); 
@@ -346,7 +349,6 @@ public class main {
             
             for (int i = 0; i < buttonsProdEmp.size(); i++) {
                 try{
-                    System.out.println("Se ha detenido el productor de botones.");
                     buttonsProdEmp.get(i).stop(); // SE DETIENEN TODOS LOS PRODUCTORES
                 } catch(Error e) {
                     System.out.println(e);
@@ -355,7 +357,6 @@ public class main {
             
             for(int i = 0; i < armsProdEmp.size(); i++) {
                 try{
-                    System.out.println("Se ha detenido el productor de brazos.");
                     armsProdEmp.get(i).stop();
                 } catch(Error e) {
                     System.out.println(e);
@@ -364,7 +365,6 @@ public class main {
             
             for (int i = 0; i < legsProdEmp.size(); i++) {
                 try{
-                    System.out.println("Se ha detenido el productor de piernas.");
                     legsProdEmp.get(i).stop();
                 } catch (Error e){
                     System.out.println(e);
@@ -374,7 +374,7 @@ public class main {
             
             for (int i = 0; i < bodyProdEmp.size(); i++) {
                 try{
-                    System.out.println("Se ha detenido el productor de cuerpos.");
+                    
                     bodyProdEmp.get(i).stop();
                 } catch(Error e ) {
                     System.out.println(e);
@@ -384,7 +384,7 @@ public class main {
             
             for (int i = 0; i < assemEmp.size(); i++) {
                 try{
-                    System.out.println("Se ha detenido el ensamblador.");
+                    
                     assemEmp.get(i).stop();
                 } catch(Error e) {
                     System.out.println(e);
@@ -392,6 +392,7 @@ public class main {
             }
             
             this.currentTime.stop();
+            this.currentBoss.stop();
             
             } catch(Error e){
                 System.out.println(e);

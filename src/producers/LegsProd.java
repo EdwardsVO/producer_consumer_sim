@@ -42,7 +42,6 @@ public class LegsProd extends Thread {
                         this.cantProduc++;
                         this.console3.setText("Productor " + this.name + " ha fabricado una pierna nueva");
                         this.legsQuantity.setText(String.valueOf(Almacen.contLegs));
-                        System.out.println("\n Cantidad de piernas en el almacen: " + Almacen.contLegs + "\n");
                         Thread.sleep(2 * (Almacen.dayEquiv) / this.LegsPerDay);
                         this.mutex.release();
                         this.semLegsCons.release();

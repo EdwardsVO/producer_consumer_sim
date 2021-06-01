@@ -38,7 +38,6 @@ public class ArmsProd extends Thread {
                         this.cantArmsProduc++;
                         this.console2.setText("Productor de brazos " + this.name + " ha fabricado 1 brazo");
                         this.armsQuantity.setText(String.valueOf(Almacen.contArms));
-                        System.out.println("\n Cantidad de brazos en el almacen: " + Almacen.contArms + "\n");
                         Thread.sleep(Almacen.dayEquiv / this.ArmsPerDay);
                         this.mutex.release();
                         this.semArmCons.release();

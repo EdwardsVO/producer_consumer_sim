@@ -42,8 +42,9 @@ public class Time extends Thread {
                 }
                 Almacen.daysPassed++;
                 this.days.setText(String.valueOf(Almacen.daysPassed));
+                this.passed = true;
                 Almacen.hoursPassed = 0;
-                 this.passed = true;
+                 
             }
             
         }

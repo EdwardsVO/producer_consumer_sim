@@ -73,7 +73,6 @@ public class Assembler extends Thread {
                 Almacen.contBody -= 1;
                 Almacen.panasBuilt++;
                 this.cantPanasProduc++;
-                 System.out.println("\nPiezas en el almacen:\n - Botones: " + Almacen.contButtons + "\n - Brazos: " + Almacen.contArms + "\n - Piernas: " + Almacen.contLegs + "\n - Cuerpo: " + Almacen.contBody + "\n");
                 this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
                 this.console.setText("El ensamblador " + name + " ha armado un PANA");
                 try {

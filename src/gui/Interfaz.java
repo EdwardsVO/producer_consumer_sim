@@ -134,52 +134,55 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Gill Sans MT Condensed", 1, 48)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("MATTEL PANA'S PRODUCTION");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 560, 40));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 10, 560, 40));
 
-        jLabel4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("ENSAMBLADORES");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 190, 190, 20));
 
-        jLabel5.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("ALMACEN");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 400, -1, -1));
 
-        jLabel6.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Botones");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 490, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(51, 51, 51));
         jLabel7.setText("Brazos");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 490, -1, -1));
 
-        jLabel8.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Piernas");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 490, -1, -1));
 
+        hireProdButton.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         hireProdButton.setText("Contratar");
         hireProdButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hireProdButtonActionPerformed(evt);
             }
         });
-        jPanel1.add(hireProdButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 230, -1, 30));
+        jPanel1.add(hireProdButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 230, -1, 30));
 
+        delAssem.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         delAssem.setText("Despedir");
         delAssem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 delAssemActionPerformed(evt);
             }
         });
-        jPanel1.add(delAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 230, -1, 30));
+        jPanel1.add(delAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 230, -1, 30));
 
+        initSimulation.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         initSimulation.setText("INIT SIMULATION");
         initSimulation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,73 +191,88 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(initSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 50));
 
+        stopSimulation.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         stopSimulation.setText("STOP SIM");
         stopSimulation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 stopSimulationActionPerformed(evt);
             }
         });
-        jPanel1.add(stopSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 100, -1, 50));
+        jPanel1.add(stopSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 100, 130, 50));
 
         buttonProdQuantity.setEditable(false);
+        buttonProdQuantity.setBackground(new java.awt.Color(153, 153, 153));
+        buttonProdQuantity.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane5.setViewportView(buttonProdQuantity);
 
         jPanel1.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 230, 40, 30));
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel9.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("DESPACHOS");
         jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, -1, -1));
 
         hours.setEditable(false);
+        hours.setBackground(new java.awt.Color(153, 153, 153));
+        hours.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane6.setViewportView(hours);
 
         jPanel1.add(jScrollPane6, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 70, -1));
 
         days.setEditable(false);
+        days.setBackground(new java.awt.Color(153, 153, 153));
+        days.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane7.setViewportView(days);
 
         jPanel1.add(jScrollPane7, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 120, 70, -1));
 
         jLabel10.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel10.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 12)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("HORAS");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 80, -1, -1));
 
         console1.setEditable(false);
-        console1.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        console1.setBackground(new java.awt.Color(153, 153, 153));
+        console1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 8)); // NOI18N
         jScrollPane8.setViewportView(console1);
 
-        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 230, 270, 30));
+        jPanel1.add(jScrollPane8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 270, 30));
 
         console2.setEditable(false);
-        console2.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        console2.setBackground(new java.awt.Color(153, 153, 153));
+        console2.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 8)); // NOI18N
         jScrollPane9.setViewportView(console2);
 
-        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, 270, 30));
+        jPanel1.add(jScrollPane9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, 270, 30));
 
+        hireArmsProd.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         hireArmsProd.setText("Contratar");
         hireArmsProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hireArmsProdActionPerformed(evt);
             }
         });
-        jPanel1.add(hireArmsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, -1, 30));
+        jPanel1.add(hireArmsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 270, -1, 30));
 
         console3.setEditable(false);
-        console3.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        console3.setBackground(new java.awt.Color(153, 153, 153));
+        console3.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 8)); // NOI18N
         jScrollPane10.setViewportView(console3);
 
-        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, 270, 30));
+        jPanel1.add(jScrollPane10, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 310, 270, 30));
 
+        hireLegsProd.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         hireLegsProd.setText("Contratar");
         hireLegsProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hireLegsProdActionPerformed(evt);
             }
         });
-        jPanel1.add(hireLegsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 310, -1, 30));
+        jPanel1.add(hireLegsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, -1, 30));
 
+        hireAssem.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         hireAssem.setText("Contratar");
         hireAssem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,26 +282,34 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(hireAssem, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 230, -1, 30));
 
         consolee.setEditable(false);
-        consolee.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        consolee.setBackground(new java.awt.Color(153, 153, 153));
+        consolee.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 10)); // NOI18N
         jScrollPane11.setViewportView(consolee);
 
         jPanel1.add(jScrollPane11, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 270, 270, 70));
 
         buttonQuantity.setEditable(false);
+        buttonQuantity.setBackground(new java.awt.Color(153, 153, 153));
+        buttonQuantity.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane12.setViewportView(buttonQuantity);
 
         jPanel1.add(jScrollPane12, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 450, 40, 30));
 
         armsQuantity.setEditable(false);
+        armsQuantity.setBackground(new java.awt.Color(153, 153, 153));
+        armsQuantity.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane13.setViewportView(armsQuantity);
 
         jPanel1.add(jScrollPane13, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 40, 30));
 
         legsQuantity.setEditable(false);
+        legsQuantity.setBackground(new java.awt.Color(153, 153, 153));
+        legsQuantity.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane14.setViewportView(legsQuantity);
 
         jPanel1.add(jScrollPane14, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 450, 40, 30));
 
+        delButtonProd.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         delButtonProd.setText("Despedir");
         delButtonProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -292,6 +318,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(delButtonProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, -1, 30));
 
+        delArmsProd.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         delArmsProd.setText("Despedir");
         delArmsProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,6 +327,7 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(delArmsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, 30));
 
+        delLegsProd.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         delLegsProd.setText("Despedir");
         delLegsProd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -309,38 +337,44 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(delLegsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, 30));
 
         tandas.setEditable(false);
+        tandas.setBackground(new java.awt.Color(153, 153, 153));
+        tandas.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane15.setViewportView(tandas);
 
         jPanel1.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 70, -1));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("DIAS");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 120, -1, -1));
 
-        jLabel12.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("PRODUCTORES");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, 160, 20));
 
-        jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(51, 51, 51));
         jLabel13.setText("PANAS DISTRIBUIDOS");
         jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 490, -1, -1));
 
         totalPanas.setEditable(false);
+        totalPanas.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane16.setViewportView(totalPanas);
 
         jPanel1.add(jScrollPane16, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 430, 40, 30));
 
+        hireBodyProd1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         hireBodyProd1.setText("Contratar");
         hireBodyProd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hireBodyProd1ActionPerformed(evt);
             }
         });
-        jPanel1.add(hireBodyProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, -1, 30));
+        jPanel1.add(hireBodyProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, 30));
 
+        delBodyProd1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         delBodyProd1.setText("Despedir");
         delBodyProd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -350,77 +384,92 @@ public class Interfaz extends javax.swing.JFrame {
         jPanel1.add(delBodyProd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, -1, 30));
 
         console5.setEditable(false);
-        console5.setFont(new java.awt.Font("Dialog", 0, 8)); // NOI18N
+        console5.setBackground(new java.awt.Color(153, 153, 153));
+        console5.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 8)); // NOI18N
         jScrollPane17.setViewportView(console5);
 
-        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, 270, 30));
+        jPanel1.add(jScrollPane17, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, 270, 30));
 
-        jLabel14.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(51, 51, 51));
         jLabel14.setText("Botones");
-        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jPanel1.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
 
-        jLabel15.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(51, 51, 51));
         jLabel15.setText("Brazos");
-        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jPanel1.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, -1));
 
-        jLabel16.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(51, 51, 51));
         jLabel16.setText("Piernas");
-        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 310, -1, -1));
+        jPanel1.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
 
-        jLabel17.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(51, 51, 51));
         jLabel17.setText("Cuerpo");
-        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        jPanel1.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
 
-        jLabel18.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 18)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(51, 51, 51));
         jLabel18.setText("Cuerpo");
         jPanel1.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 490, -1, -1));
 
         assemQ.setEditable(false);
+        assemQ.setBackground(new java.awt.Color(153, 153, 153));
+        assemQ.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane18.setViewportView(assemQ);
 
         jPanel1.add(jScrollPane18, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 230, 40, 30));
 
         armsProdQuantity1.setEditable(false);
+        armsProdQuantity1.setBackground(new java.awt.Color(153, 153, 153));
+        armsProdQuantity1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane19.setViewportView(armsProdQuantity1);
 
         jPanel1.add(jScrollPane19, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 270, 40, 30));
 
         legsProdQuantity1.setEditable(false);
+        legsProdQuantity1.setBackground(new java.awt.Color(153, 153, 153));
+        legsProdQuantity1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane20.setViewportView(legsProdQuantity1);
 
         jPanel1.add(jScrollPane20, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 310, 40, 30));
 
         bodyProdQuantity.setEditable(false);
+        bodyProdQuantity.setBackground(new java.awt.Color(153, 153, 153));
+        bodyProdQuantity.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane21.setViewportView(bodyProdQuantity);
 
         jPanel1.add(jScrollPane21, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 350, 40, 30));
 
         bodyQuantity1.setEditable(false);
+        bodyQuantity1.setBackground(new java.awt.Color(153, 153, 153));
+        bodyQuantity1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane22.setViewportView(bodyQuantity1);
 
         jPanel1.add(jScrollPane22, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 40, 30));
 
-        jLabel19.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 1, 18)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(51, 51, 51));
         jLabel19.setText("PANAS PRODUCIDOS");
         jPanel1.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 430, -1, -1));
 
         totalPanasDistributed.setEditable(false);
+        totalPanasDistributed.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane23.setViewportView(totalPanasDistributed);
 
         jPanel1.add(jScrollPane23, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 490, 40, 30));
 
         daysLeft1.setEditable(false);
+        daysLeft1.setBackground(new java.awt.Color(153, 153, 153));
+        daysLeft1.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
         jScrollPane24.setViewportView(daysLeft1);
 
         jPanel1.add(jScrollPane24, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 70, -1));
 
         jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 12)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("DIAS PARA ENTREGA");
         jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
@@ -433,7 +482,7 @@ public class Interfaz extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
