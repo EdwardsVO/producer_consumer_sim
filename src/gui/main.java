@@ -47,12 +47,11 @@ public class main {
     Semaphore mutexLegs = new Semaphore(1);
     Semaphore mutexBody = new Semaphore(1);
     Semaphore mutexAssem = new Semaphore (1);
-    Semaphore mutexPanas = new Semaphore(1);
     Semaphore mutexAdmin = new Semaphore(1);
     
     //PROD - CONS ----> BOTONES
     Semaphore semButtonProd = new Semaphore(60); //TOTAL DE BOTONES
-    Semaphore semButtonCons = new Semaphore(0); //CANTIDAD EN CONSUMO
+    Semaphore semButtonCons = new Semaphore(0); //CANTIDAD EN CONSUMO   
 
     //PROD - CONS ----> BRAZOS
     Semaphore semArmsProd = new Semaphore(40);

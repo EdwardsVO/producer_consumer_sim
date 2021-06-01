@@ -39,7 +39,7 @@ public class ArmsProd extends Thread {
 
     public void run() {
         while (true) {
-                while (this.cantArmsProduc != 1) {
+                if (this.cantArmsProduc != 1) {
                     try {
                         this.semArmProd.acquire();
                         this.mutex.acquire();

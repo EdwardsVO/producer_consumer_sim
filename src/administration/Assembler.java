@@ -107,10 +107,10 @@ public class Assembler extends Thread {
                 mutexArmsProd.release();
                 mutexButtonProd.release();
                 mutex.release();
-                semProdButton.release();
-                semProdArms.release();
-                semProdLegs.release();
-                semProdBody.release();
+                semProdButton.release(8);
+                semProdArms.release(2);
+                semProdLegs.release(2);
+                semProdBody.release(1);
         }
         }
         

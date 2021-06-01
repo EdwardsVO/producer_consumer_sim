@@ -43,7 +43,7 @@ public class BodyProd extends Thread {
 
     public void run() {
         while (start) {
-                while (Almacen.daysPassed % 2 != 0 && this.cantProduc != 1) {
+                if (Almacen.daysPassed % 2 != 0 && this.cantProduc != 1) {
                     try {
                         this.semBodyProd.acquire();
                         this.mutex.acquire();

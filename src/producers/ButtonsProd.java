@@ -33,6 +33,8 @@ public class ButtonsProd extends Thread {
     private javax.swing.JTextPane console1;
     private javax.swing.JTextPane buttonQuantity;
     private boolean exit;
+    
+    private int taco;
 
     public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
@@ -44,12 +46,13 @@ public class ButtonsProd extends Thread {
 
     public void run() {
         while(start){
-                while (this.cantProduc < 4) {
+                if(this.cantProduc < 4) {
                     try {
                         this.semButtonProd.acquire();
                         this.mutex.acquire();
                         Almacen.contButtons++;
                         this.cantProduc++;
+                        this.taco++;
                         this.console1.setText("Productor " + this.name + " ha fabricado 1 boton");
                         this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
                         
@@ -57,8 +60,9 @@ public class ButtonsProd extends Thread {
 //                        System.out.println(state);
                         
                                                 System.out.println("\n Cantidad de botones en el almacen: " + Almacen.contButtons + "\n");
+                                                System.out.println("\n Cantiddad de botones TOTALES " + this.taco + "\n");
 
-                        Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
+//                        Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
                         
                         this.mutex.release();
                         this.semButtonCons.release();
