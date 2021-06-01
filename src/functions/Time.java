@@ -6,6 +6,7 @@
 package functions;
 
 import administration.Almacen;
+import administration.Boss;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -17,15 +18,18 @@ public class Time extends Thread {
 
     private boolean start;
     public static volatile boolean passed = false;
+    Boss boss;
     javax.swing.JTextPane hours;
     javax.swing.JTextPane days;
     javax.swing.JTextPane daysLeft;
+    
 
     public Time(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
         this.hours = hours;
         this.days = days;
         this.daysLeft = daysLeft;
         this.start = true;
+        this.boss = boss;
     }
 
     public void run() {
@@ -43,9 +47,8 @@ public class Time extends Thread {
                     this.hours.setText(String.valueOf(Almacen.hoursPassed));
                 }
                 Almacen.daysPassed++;
-                Almacen.daysLeft--;
                 this.days.setText(String.valueOf(Almacen.daysPassed));
-                this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
+                //this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
                 Almacen.hoursPassed = 0;
                 System.out.println("Han transcurrido " + Almacen.daysPassed + " dias");
                 this.passed = true;

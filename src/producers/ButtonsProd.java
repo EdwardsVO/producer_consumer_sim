@@ -39,10 +39,11 @@ public class ButtonsProd extends Thread {
         this.semButtonProd = semButtonProd;
         this.semButtonCons = semButtonCons;
         this.name = name;
+        this.start = true;
     }
 
     public void run() {
-        while(true){
+        while(start){
                 while (this.cantProduc != 4) {
                     try {
                         this.semButtonProd.acquire();

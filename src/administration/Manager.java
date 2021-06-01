@@ -20,6 +20,7 @@ public class Manager extends Thread {
     
     javax.swing.JTextPane panasDistributed;
     javax.swing.JTextPane panasBuilt;
+    javax.swing.JTextPane tandas;
     private boolean reset = false;
     private boolean exit;
     private Semaphore mutexAdmin;
@@ -41,14 +42,14 @@ public class Manager extends Thread {
             if(Almacen.daysLeft == 0) {
                 this.distributed += Almacen.panasBuilt;
                 Almacen.panasBuilt = 0;
-                //System.out.println("Se han distribuido " + this.distributed + " panas, ahora quedan " + Almacen.panasBuilt + " en el almacen.");
 
-                // Esto crashea.
                 this.panasDistributed.setText(String.valueOf(this.distributed));
                 this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
 
                 Almacen.daysLeft = 20;
-                Almacen.daysPassed = 0;
+                //Almacen.daysPassed = 0;
+                Almacen.tandas ++;
+                this.tandas.setText(String.valueOf(Almacen.tandas));
                 this.mutexAdmin.release();
             } else {
                 this.mutexAdmin.release();
@@ -61,9 +62,10 @@ public class Manager extends Thread {
         }
     }
     
-    public void showDistributed(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt){
+    public void showDistributed(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas){
         this.panasDistributed = panasDistributed;
         this.panasBuilt = panasBuilt;
+        this.tandas = tandas;
     }
     
     

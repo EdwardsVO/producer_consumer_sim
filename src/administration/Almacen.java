@@ -36,7 +36,5 @@ public class Almacen {
     public static volatile int daysLeft = 20;
     public static volatile int panasBuilt = 0;
     public static volatile int panasDistributed = 0;
-    
-   
-    
+    public static volatile int tandas = 0;
 }

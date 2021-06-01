@@ -38,10 +38,12 @@ public class Interfaz extends javax.swing.JFrame {
         this.armsQuantity.setText(String.valueOf(Almacen.contArms));
         this.legsQuantity.setText(String.valueOf(Almacen.contLegs));
         this.bodyQuantity1.setText(String.valueOf(Almacen.contBody));
+        this.daysLeft1.setText(String.valueOf(Almacen.daysLeft));
         this.assemQ.setText(String.valueOf(Almacen.panasBuilt));
-        this.daysLeft.setText(String.valueOf(Almacen.daysLeft));
+        this.tandas.setText(String.valueOf(Almacen.tandas));
         this.days.setText(String.valueOf(Almacen.daysPassed));
         this.hours.setText(String.valueOf(Almacen.hoursPassed));
+        this.totalPanas.setText(String.valueOf(Almacen.panasBuilt));
         this.totalPanasDistributed.setText(String.valueOf(Almacen.panasDistributed));
     }
     
@@ -55,7 +57,6 @@ public class Interfaz extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        printPanas = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -95,7 +96,7 @@ public class Interfaz extends javax.swing.JFrame {
         delArmsProd = new javax.swing.JButton();
         delLegsProd = new javax.swing.JButton();
         jScrollPane15 = new javax.swing.JScrollPane();
-        daysLeft = new javax.swing.JTextPane();
+        tandas = new javax.swing.JTextPane();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -123,20 +124,15 @@ public class Interfaz extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jScrollPane23 = new javax.swing.JScrollPane();
         totalPanasDistributed = new javax.swing.JTextPane();
+        jScrollPane24 = new javax.swing.JScrollPane();
+        daysLeft1 = new javax.swing.JTextPane();
+        jLabel20 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        printPanas.setText("PRINT");
-        printPanas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                printPanasActionPerformed(evt);
-            }
-        });
-        jPanel1.add(printPanas, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 30, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Gill Sans MT Condensed", 1, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
@@ -207,8 +203,8 @@ public class Interfaz extends javax.swing.JFrame {
 
         jLabel9.setBackground(new java.awt.Color(0, 0, 0));
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel9.setText("DIAS PARA ENTREGA");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
+        jLabel9.setText("DESPACHOS");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 120, -1, -1));
 
         hours.setEditable(false);
         jScrollPane6.setViewportView(hours);
@@ -312,10 +308,10 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(delLegsProd, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, -1, 30));
 
-        daysLeft.setEditable(false);
-        jScrollPane15.setViewportView(daysLeft);
+        tandas.setEditable(false);
+        jScrollPane15.setViewportView(tandas);
 
-        jPanel1.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 70, -1));
+        jPanel1.add(jScrollPane15, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 120, 70, -1));
 
         jLabel11.setBackground(new java.awt.Color(0, 0, 0));
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
@@ -419,6 +415,16 @@ public class Interfaz extends javax.swing.JFrame {
 
         jPanel1.add(jScrollPane23, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 490, 40, 30));
 
+        daysLeft1.setEditable(false);
+        jScrollPane24.setViewportView(daysLeft1);
+
+        jPanel1.add(jScrollPane24, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, 70, -1));
+
+        jLabel20.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("DIAS PARA ENTREGA");
+        jPanel1.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 80, -1, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -441,7 +447,7 @@ public class Interfaz extends javax.swing.JFrame {
     }//GEN-LAST:event_hireProdButtonActionPerformed
 
     private void initSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_initSimulationActionPerformed
-          main.initSimulation(this.hours, this.days, this.daysLeft, this.totalPanasDistributed, this.totalPanas);
+          main.initSimulation(this.hours, this.days, this.daysLeft1, this.totalPanasDistributed, this.totalPanas, this.tandas);
             
     }//GEN-LAST:event_initSimulationActionPerformed
 
@@ -496,10 +502,6 @@ public class Interfaz extends javax.swing.JFrame {
         this.assemQ.setText(String.valueOf(main.assemEmp.size()));       
     }//GEN-LAST:event_delAssemActionPerformed
 
-    private void printPanasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_printPanasActionPerformed
-        System.out.println(Almacen.panasBuilt);
-    }//GEN-LAST:event_printPanasActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -550,7 +552,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JTextPane console5;
     private javax.swing.JTextPane consolee;
     private javax.swing.JTextPane days;
-    private javax.swing.JTextPane daysLeft;
+    private javax.swing.JTextPane daysLeft1;
     private javax.swing.JButton delArmsProd;
     private javax.swing.JButton delAssem;
     private javax.swing.JButton delBodyProd1;
@@ -574,6 +576,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -595,6 +598,7 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane21;
     private javax.swing.JScrollPane jScrollPane22;
     private javax.swing.JScrollPane jScrollPane23;
+    private javax.swing.JScrollPane jScrollPane24;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
@@ -602,8 +606,8 @@ public class Interfaz extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextPane legsProdQuantity1;
     private javax.swing.JTextPane legsQuantity;
-    private javax.swing.JButton printPanas;
     private javax.swing.JButton stopSimulation;
+    private javax.swing.JTextPane tandas;
     private javax.swing.JTextPane totalPanas;
     private javax.swing.JTextPane totalPanasDistributed;
     // End of variables declaration//GEN-END:variables

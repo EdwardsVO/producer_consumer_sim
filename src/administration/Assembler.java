@@ -35,7 +35,7 @@ public class Assembler extends Thread {
     javax.swing.JTextPane panasBuilt;
     javax.swing.JTextPane console;
 
-    public Assembler(Semaphore semConsButton, Semaphore semProdButton, Semaphore semProdArms, Semaphore semConsArms, Semaphore semProdLegs, Semaphore semConsLegs, Semaphore semProdBody, Semaphore semConsBody, String name,Semaphore mutex) {
+    public Assembler(Semaphore semConsButton, Semaphore semProdButton, Semaphore semProdArms, Semaphore semConsArms, Semaphore semProdLegs, Semaphore semConsLegs, Semaphore semProdBody, Semaphore semConsBody, String name, Semaphore mutex) {
         this.semProdButton = semProdButton;
         this.semConsButton = semConsButton;
         this.semProdArms = semProdArms;
@@ -50,37 +50,42 @@ public class Assembler extends Thread {
     }
 
     public void run() {
-        while (start) {
-           // while (cantPanasProduc != 1) {
-                try {
-                    semConsButton.acquire(8);
-                    semConsArms.acquire(2);
-                    semConsLegs.acquire(2);
-                    semConsBody.acquire(1);
-                    mutex.acquire();
-                    Almacen.contArms -= 2;
-                    Almacen.contLegs -= 2;
-                    Almacen.contButtons -= 8;
-                    Almacen.contBody -= 1;
-                    Almacen.panasBuilt++;
-                    this.cantPanasProduc++;
-                    this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
-                    this.console.setText("El ensamblador " + name + " ha armado un PANA");
-                    Thread.sleep(Almacen.dayEquiv / this.panasPerDay);
-                    mutex.release();
-                    semProdButton.release();
-                    semProdArms.release();
-                    semProdLegs.release();
-                    semProdBody.release();
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
-                }
+        while (true) {
+            // while (cantPanasProduc != 1) {
+            try {
+                semConsButton.acquire(8);
+                semConsArms.acquire(2);
+                semConsLegs.acquire(2);
+                semConsBody.acquire(1);
+                mutex.acquire();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
             }
+            Almacen.contArms -= 2;
+            Almacen.contLegs -= 2;
+            Almacen.contButtons -= 8;
+            Almacen.contBody -= 1;
+            Almacen.panasBuilt++;
+            //this.cantPanasProduc++;
+            this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
+            this.console.setText("El ensamblador " + name + " ha armado un PANA");
+            try {
+                Thread.sleep(Almacen.dayEquiv / this.panasPerDay);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            mutex.release();
+            semProdButton.release();
+            semProdArms.release();
+            semProdLegs.release();
+            semProdBody.release();
+
             if (Time.passed == true) {
-                    this.cantPanasProduc = 0;
+                this.cantPanasProduc = 0;
+            }
+
         }
     }
-
 
     public void showPanas(javax.swing.JTextPane panasBuilt) {
         this.panasBuilt = panasBuilt;
