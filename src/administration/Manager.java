@@ -1,20 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package administration;
-
-import functions.Time;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import producers.BodyProd;
 
-/**
- *
- * @author sebastian
- */
 public class Manager extends Thread {
     
     
@@ -42,12 +30,9 @@ public class Manager extends Thread {
             if(Almacen.daysLeft == 0) {
                 this.distributed += Almacen.panasBuilt;
                 Almacen.panasBuilt = 0;
-
                 this.panasDistributed.setText(String.valueOf(this.distributed));
                 this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
-
                 Almacen.daysLeft = 20;
-                //Almacen.daysPassed = 0;
                 Almacen.tandas ++;
                 this.tandas.setText(String.valueOf(Almacen.tandas));
                 this.mutexAdmin.release();

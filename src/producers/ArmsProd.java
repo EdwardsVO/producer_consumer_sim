@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package producers;
 
 import administration.Almacen;
@@ -11,10 +6,6 @@ import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author sebastian
- */
 public class ArmsProd extends Thread {
 
     private String name;
@@ -43,21 +34,12 @@ public class ArmsProd extends Thread {
                     try {
                         this.semArmProd.acquire();
                         this.mutex.acquire();
-
-//                    Thread.sleep(Almacen.dayEquiv/ArmsPerDay);
-
                         Almacen.contArms++;
                         this.cantArmsProduc++;
-
                         this.console2.setText("Productor de brazos " + this.name + " ha fabricado 1 brazo");
                         this.armsQuantity.setText(String.valueOf(Almacen.contArms));
-                        
-                                                System.out.println("\n Cantidad de brazos en el almacen: " + Almacen.contArms + "\n");
-
-                        
+                        System.out.println("\n Cantidad de brazos en el almacen: " + Almacen.contArms + "\n");
                         Thread.sleep(Almacen.dayEquiv / this.ArmsPerDay);
-
-     
                         this.mutex.release();
                         this.semArmCons.release();
                     } catch (InterruptedException ex) {
@@ -66,11 +48,8 @@ public class ArmsProd extends Thread {
                 }
                 if (Time.passed == true) {
                     this.cantArmsProduc = 0;
-                }
-            
+                }   
         }
-
-
     }
 
     public void showProduced(javax.swing.JTextPane console2) {

@@ -1,20 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package administration;
 
-import functions.Time;
 import java.util.concurrent.Semaphore;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import producers.ButtonsProd;
 
-/**
- *
- * @author sebastian
- */
 public class Assembler extends Thread {
 
     private Semaphore semConsButton;
@@ -65,9 +54,7 @@ public class Assembler extends Thread {
                 
                     
                  try {
-                     
                      mutex.acquire();
-                     
                      semConsButton.acquire(8);
                      semConsArms.acquire(2);
                      semConsLegs.acquire(2);
@@ -80,10 +67,6 @@ public class Assembler extends Thread {
                  } catch (InterruptedException ex) {
                      Logger.getLogger(Assembler.class.getName()).log(Level.SEVERE, null, ex);
                  }
-                    
-                    
-                    
-                
                 Almacen.contArms -= 2;
                 Almacen.contLegs -= 2;
                 Almacen.contButtons -= 8;
@@ -91,10 +74,6 @@ public class Assembler extends Thread {
                 Almacen.panasBuilt++;
                 this.cantPanasProduc++;
                  System.out.println("\nPiezas en el almacen:\n - Botones: " + Almacen.contButtons + "\n - Brazos: " + Almacen.contArms + "\n - Piernas: " + Almacen.contLegs + "\n - Cuerpo: " + Almacen.contBody + "\n");
-
-    //            Thread.State state = Thread.currentThread().getState();
-    //                        System.out.println(state);
-
                 this.panasBuilt.setText(String.valueOf(Almacen.panasBuilt));
                 this.console.setText("El ensamblador " + name + " ha armado un PANA");
                 try {

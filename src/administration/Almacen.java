@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package administration;
 import gui.main;
 import functions.dataFunctions;
 
-/**
- *
- * @author sebastian
- */
 public class Almacen {
     
     main main;
@@ -23,8 +14,6 @@ public class Almacen {
         this.array = data.split(",");
         return this.array; 
     }
-    
-
     
     public static volatile int contButtons = 0;
     public static volatile int contLegs = 0;

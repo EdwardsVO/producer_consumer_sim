@@ -1,12 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package administration;
-
-
- 
 
 import producers.ButtonsProd;
 import producers.ArmsProd;
@@ -14,11 +6,6 @@ import producers.LegsProd;
 import java.util.concurrent.Semaphore;
 import producers.BodyProd;
 
-
-/**
- *
- * @author sebastian
- */
 public class Employee extends Thread {
     
     public ButtonsProd hireProdEmployee(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {

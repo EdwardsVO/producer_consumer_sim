@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package producers;
 
 import java.util.concurrent.Semaphore;
@@ -13,10 +8,6 @@ import functions.Time;
 import gui.Interfaz;
 import gui.main;
 
-/**
- *
- * @author sebastian
- */
 public class ButtonsProd extends Thread {
 
     private String name;
@@ -55,29 +46,17 @@ public class ButtonsProd extends Thread {
                         this.taco++;
                         this.console1.setText("Productor " + this.name + " ha fabricado 1 boton");
                         this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
-                        
-//                        Thread.State state = Thread.currentThread().getState();
-//                        System.out.println(state);
-                        
-                                                System.out.println("\n Cantidad de botones en el almacen: " + Almacen.contButtons + "\n");
-                                                System.out.println("\n Cantiddad de botones TOTALES " + this.taco + "\n");
-
-//                        Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
-                        
+                        Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
                         this.mutex.release();
                         this.semButtonCons.release();
-
                     } catch (InterruptedException ex) {
                         Logger.getLogger(ButtonsProd.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
                 if (Time.passed == true) {
-                    this.cantProduc = 0;
-//                    
+                    this.cantProduc = 0;             
                 }
-                
             } 
-        
     }
 
     public void showProduced(javax.swing.JTextPane console1) { //AQUI

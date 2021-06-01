@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package gui;
 
 import administration.Almacen;
@@ -20,10 +15,6 @@ import producers.LegsProd;
 import producers.BodyProd;
 import administration.Manager;
 
-/**
- *
- * @author Edward Vergel
- */
 public class main {
 
     boolean onSim = false;
@@ -35,6 +26,8 @@ public class main {
     dataFunctions df = new dataFunctions();
     
     public String[] array = this.readData();
+    
+    Time currentTime;
 
     ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
     ArrayList<ArmsProd> armsProdEmp = new ArrayList<>(); //PRODUCTORES DE BRAZOS MAXIMOS
@@ -299,6 +292,9 @@ public class main {
                 
                 
             }
+            
+            this.currentTime.stop();
+            
             } catch(Error e){
                 System.out.println(e);
             }
@@ -310,8 +306,8 @@ public class main {
     
     public void createTime(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
         Time time = new Time(hours, days, daysLeft, mutexAdmin);
-        time.start();
-        time.init();
+        this.currentTime = time;
+        this.currentTime.start();
     }
     
     public String[] readData() {

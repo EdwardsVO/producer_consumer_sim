@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package producers;
 
 import java.util.concurrent.Semaphore;
@@ -13,10 +8,6 @@ import functions.Time;
 import gui.Interfaz;
 import gui.main;
 
-/**
- *
- * @author sebastian
- */
 public class LegsProd extends Thread {
 
     private String name;
@@ -47,22 +38,14 @@ public class LegsProd extends Thread {
                     try {
                         this.semLegsProd.acquire();
                         this.mutex.acquire();
-
-                        //Thread.sleep(Almacen.dayEquiv * 2);
-                        
                         Almacen.contLegs++;
                         this.cantProduc++;
-
                         this.console3.setText("Productor " + this.name + " ha fabricado una pierna nueva");
                         this.legsQuantity.setText(String.valueOf(Almacen.contLegs));
-                        
-                                                System.out.println("\n Cantidad de piernas en el almacen: " + Almacen.contLegs + "\n");
-
+                        System.out.println("\n Cantidad de piernas en el almacen: " + Almacen.contLegs + "\n");
                         Thread.sleep(2 * (Almacen.dayEquiv) / this.LegsPerDay);
-
                         this.mutex.release();
                         this.semLegsCons.release();
-
                     } catch (InterruptedException ex) {
                         Logger.getLogger(LegsProd.class.getName()).log(Level.SEVERE, null, ex);
                     }
