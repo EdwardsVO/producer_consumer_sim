@@ -212,7 +212,7 @@ public class main {
     public void initSimulation(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft, javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas) {
         if (this.onSim == false) {
             this.onSim = true;
-            df.csvReader();
+//            df.csvReader();
             this.startAdministration(panasDistributed, panasBuilt, tandas, daysLeft); //FALTA EL BOSS
             this.createTime(hours, days, daysLeft);
             for (int i = 0; i < buttonsProdEmp.size(); i++) {

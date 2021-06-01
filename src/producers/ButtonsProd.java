@@ -53,8 +53,11 @@ public class ButtonsProd extends Thread {
                         this.console1.setText("Productor " + this.name + " ha fabricado 1 boton");
                         this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
                         
+//                        Thread.State state = Thread.currentThread().getState();
+//                        System.out.println(state);
+                        
                         Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
-
+                        
                         this.mutex.release();
                         this.semButtonCons.release();
 
@@ -64,8 +67,11 @@ public class ButtonsProd extends Thread {
                 }
                 if (Time.passed == true) {
                     this.cantProduc = 0;
+//                    
                 }
-            }
+                
+            } 
+        
     }
 
     public void showProduced(javax.swing.JTextPane console1) { //AQUI
