@@ -18,6 +18,8 @@ import administration.Manager;
 public class main {
 
     boolean onSim = false;
+    
+    boolean running = false;
 
     Almacen almacen = new Almacen(); //VARIABLES VOLATILES
     Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
@@ -80,36 +82,70 @@ public class main {
     }
     
     public void hireAssembler(javax.swing.JTextPane panasBuilt, javax.swing.JTextPane console){
-        if(assemEmp.size() < Integer.valueOf(this.array[15])){
-            Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem, mutexButtons, mutexArms, mutexLegs, mutexBody);
-            assem.showWork(console);
-            assem.showPanas(panasBuilt);
-            assemEmp.add(assem);
-            for (int i = 0; i < assemEmp.size(); i++) {
-                    assemEmp.get(i).setPanasPerDay(1 * assemEmp.size());
+        try{
+        
+            if(this.running) {
+               if(assemEmp.size() < Integer.valueOf(this.array[15])){
+                    Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem, mutexButtons, mutexArms, mutexLegs, mutexBody);
+                    assem.showWork(console);
+                    assem.showPanas(panasBuilt);
+                    assem.start();
+                    assemEmp.add(assem);
+                    
+               } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de ensambladores alcanzada");
+               }
+                
+            } else {
+            
+            
+                if(assemEmp.size() < Integer.valueOf(this.array[15])){
+                    Assembler assem = emp.hireAssembler(semButtonCons, semButtonProd, semArmsProd, semArmsCons, semLegsProd, semLegsCons, semBodyCons, semBodyProd, String.valueOf(assemEmp.size() + 1), mutexAssem, mutexButtons, mutexArms, mutexLegs, mutexBody);
+                    assem.showWork(console);
+                    assem.showPanas(panasBuilt);
+                    assemEmp.add(assem);
+                    for (int i = 0; i < assemEmp.size(); i++) {
+                            assemEmp.get(i).setPanasPerDay(1 * assemEmp.size());
+                        }
+                }else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de ensambladores alcanzada");
                 }
-        }else {
-            JOptionPane.showMessageDialog(null, "Capacidad de productores de ensambladores alcanzada");
+            }
+        } catch(Error e) {
+            System.out.println(e);
         }
     }
     
     public void hireProdButton(javax.swing.JTextPane console1, javax.swing.JTextPane buttonQuantity) {
         try {
-            if (buttonsProdEmp.size() < Integer.valueOf(this.array[10])) { //LIMITE DE PRODUCTORES 
-                ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() + 1));
-                buttonProd.showProduced(console1);
-                buttonProd.buttonQuantity(buttonQuantity);
-                buttonsProdEmp.add(buttonProd);
-                for (int i = 0; i < buttonsProdEmp.size(); i++) {
-                    buttonsProdEmp.get(i).setButtonsPerDay(4 * buttonsProdEmp.size());
+            if(this.running) {
+                if(buttonsProdEmp.size() < Integer.valueOf(this.array[10])) {
+                    ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() +1));
+                    buttonProd.showProduced(console1);
+                    buttonProd.buttonQuantity(buttonQuantity);
+                    buttonProd.start();
+                    buttonsProdEmp.add(buttonProd);
+                } else {
+                     JOptionPane.showMessageDialog(null, "Capacidad de productores de botones alcanzada");
                 }
                 
             } else {
-                JOptionPane.showMessageDialog(null, "Capacidad de productores de botones alcanzada");
+                if (buttonsProdEmp.size() < Integer.valueOf(this.array[10])) { //LIMITE DE PRODUCTORES 
+                    ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() + 1));
+                    buttonProd.showProduced(console1);
+                    buttonProd.buttonQuantity(buttonQuantity);
+                    buttonsProdEmp.add(buttonProd);
+                    for (int i = 0; i < buttonsProdEmp.size(); i++) {
+                        buttonsProdEmp.get(i).setButtonsPerDay(4 * buttonsProdEmp.size());
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de botones alcanzada");
+                }
             }
 
-        } catch (Error e) {
-            System.out.println(e);
+            } catch (Error e) {
+                System.out.println(e);
 
         }
 
@@ -117,18 +153,34 @@ public class main {
 
     public void hireProdArms(javax.swing.JTextPane console2, javax.swing.JTextPane armsQuantity) {
         try {
-            if (armsProdEmp.size() < Integer.valueOf(this.array[11])) {
-                ArmsProd armsProd = emp.hireArmsProdEmloyee(semArmsProd, semArmsCons, mutexArms, String.valueOf(armsProdEmp.size() + 1));
-                armsProd.showProduced(console2);
-                armsProd.armsQuantity(armsQuantity);
-                armsProdEmp.add(armsProd);
-                for (int i = 0; i < armsProdEmp.size(); i++) {
-                    armsProdEmp.get(i).setArmsPerDay(1 * armsProdEmp.size());
+            
+            if(this.running) {
+                if (armsProdEmp.size() < Integer.valueOf(this.array[11])) {
+                    ArmsProd armsProd = emp.hireArmsProdEmloyee(semArmsProd, semArmsCons, mutexArms, String.valueOf(armsProdEmp.size() + 1));
+                    armsProd.showProduced(console2);
+                    armsProd.armsQuantity(armsQuantity);
+                    armsProd.start();
+                    armsProdEmp.add(armsProd);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de brazos alcanzada");
                 }
-                
-            } else {
-                JOptionPane.showMessageDialog(null, "Capacidad de productores de brazos alcanzada");
+
+                } else {
+            
+                if (armsProdEmp.size() < Integer.valueOf(this.array[11])) {
+                    ArmsProd armsProd = emp.hireArmsProdEmloyee(semArmsProd, semArmsCons, mutexArms, String.valueOf(armsProdEmp.size() + 1));
+                    armsProd.showProduced(console2);
+                    armsProd.armsQuantity(armsQuantity);
+                    armsProdEmp.add(armsProd);
+                    for (int i = 0; i < armsProdEmp.size(); i++) {
+                        armsProdEmp.get(i).setArmsPerDay(1 * armsProdEmp.size());
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de brazos alcanzada");
+                }
             }
+        
         } catch (Error e) {
             System.out.println(e);
         }
@@ -136,17 +188,33 @@ public class main {
 
     public void hireProdLegs(javax.swing.JTextPane console3, javax.swing.JTextPane legsQuantity) {
         try {
-            if (legsProdEmp.size() < Integer.valueOf(this.array[12])) {
-                LegsProd legsProd = emp.hireLegsProdEmloyee(semLegsProd, semLegsCons, mutexLegs, String.valueOf(legsProdEmp.size() + 1));
-                legsProd.showProduced(console3);
-                legsProd.legsQuantity(legsQuantity);
-                legsProdEmp.add(legsProd);
-                for (int i = 0; i < legsProdEmp.size(); i++) {
-                    legsProdEmp.get(i).setLegsPerDay(1 * legsProdEmp.size());
+            if(this.running){
+                if (legsProdEmp.size() < Integer.valueOf(this.array[12])) {
+                    LegsProd legsProd = emp.hireLegsProdEmloyee(semLegsProd, semLegsCons, mutexLegs, String.valueOf(legsProdEmp.size() + 1));
+                    legsProd.showProduced(console3);
+                    legsProd.legsQuantity(legsQuantity);
+                    legsProd.start();
+                    legsProdEmp.add(legsProd);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de piernas alcanzada.");
                 }
                 
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Capacidad de productores de piernas alcanzada");
+            
+            
+                if (legsProdEmp.size() < Integer.valueOf(this.array[12])) {
+                    LegsProd legsProd = emp.hireLegsProdEmloyee(semLegsProd, semLegsCons, mutexLegs, String.valueOf(legsProdEmp.size() + 1));
+                    legsProd.showProduced(console3);
+                    legsProd.legsQuantity(legsQuantity);
+                    legsProdEmp.add(legsProd);
+                    for (int i = 0; i < legsProdEmp.size(); i++) {
+                        legsProdEmp.get(i).setLegsPerDay(1 * legsProdEmp.size());
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de piernas alcanzada");
+                }
             }
         } catch (Error e) {
             System.out.println(e);
@@ -155,18 +223,35 @@ public class main {
 
     public void hireProdBody(javax.swing.JTextPane console4, javax.swing.JTextPane bodyQuantity) {
         try {
-            if (bodyProdEmp.size() < Integer.valueOf(this.array[13])) {
+            
+            if(this.running) {
+                if (bodyProdEmp.size() < Integer.valueOf(this.array[13])) {
                 BodyProd bodyProd = emp.hireBodyProdEmloyee(semBodyProd, semBodyCons, mutexBody, String.valueOf(bodyProdEmp.size() + 1));
                 bodyProd.showProduced(console4);
                 bodyProd.bodyQuantity(bodyQuantity);
+                bodyProd.start();
                 bodyProdEmp.add(bodyProd);
-                for (int i = 0; i < bodyProdEmp.size(); i++) {
-                    bodyProdEmp.get(i).setBodyPerDay((1 * bodyProdEmp.size()));
-                    
+                
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de cuerpo central alcanzada");
                 }
                 
+                
             } else {
-                JOptionPane.showMessageDialog(null, "Capacidad de productores de cuerpo central alcanzada");
+            
+            
+                if (bodyProdEmp.size() < Integer.valueOf(this.array[13])) {
+                    BodyProd bodyProd = emp.hireBodyProdEmloyee(semBodyProd, semBodyCons, mutexBody, String.valueOf(bodyProdEmp.size() + 1));
+                    bodyProd.showProduced(console4);
+                    bodyProd.bodyQuantity(bodyQuantity);
+                    bodyProdEmp.add(bodyProd);
+                    for (int i = 0; i < bodyProdEmp.size(); i++) {
+                        bodyProdEmp.get(i).setBodyPerDay((1 * bodyProdEmp.size()));
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Capacidad de productores de cuerpo central alcanzada");
+                }
             }
         } catch (Error e) {
             System.out.println(e);
@@ -174,37 +259,100 @@ public class main {
     }
     
     public void delAssembler(){
-        if(assemEmp.size() > 1){
-            assemEmp.remove(0);
-        }else {
-            JOptionPane.showMessageDialog(null, "Valor de ensambladores mínimo alcanzado", "ERROR", 0);  
-        }
+        
+        if(this.running) {
+            if(assemEmp.size() > Integer.parseInt(this.array[14])) {
+                int out = assemEmp.size()-1;
+                assemEmp.get(out).stop();
+                assemEmp.remove(out);
+            } else {
+                JOptionPane.showMessageDialog(null, "Valor de ensambladores mínimo alcanzado", "ERROR", 0);  
+
+            }
+        } else {
+            if(assemEmp.size() > Integer.parseInt(this.array[14])){
+                assemEmp.remove(0);
+            }else {
+                JOptionPane.showMessageDialog(null, "Valor de ensambladores mínimo alcanzado", "ERROR", 0);  
+            }
+            }
     }
     
     public void deleteButtonProd(){
-        if(buttonsProdEmp.size() > 1){
+        
+        if(this.running) {
+            if(buttonsProdEmp.size() > Integer.parseInt(this.array[6])) {
+                int out = buttonsProdEmp.size()-1;
+                buttonsProdEmp.get(out).stop();
+                buttonsProdEmp.remove(out);
+            } else {
+             JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);       
+
+            }
+        } else {
+        
+        if(buttonsProdEmp.size() > Integer.parseInt(this.array[6])){
             buttonsProdEmp.remove(0);
         }else {
             JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);       
         }
+        }
     }
     public void deleteArmsProd(){
-        if(armsProdEmp.size() > 1){
+        if(this.running) {
+            if(armsProdEmp.size() > Integer.parseInt(this.array[7])) {
+                int out = armsProdEmp.size() -1;
+                armsProdEmp.get(out).stop();
+                armsProdEmp.remove(out);
+            } else {
+                JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
+
+            } else {        
+        
+        if(armsProdEmp.size() > Integer.parseInt(this.array[7])){
             armsProdEmp.remove(0);
         }else {
             JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
+        }
     }
+    
     public void deleteLegsProd(){
-        if(legsProdEmp.size() > 1){
-            legsProdEmp.remove(0);
-        }else {
-            JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
-    }
+        if(this.running) {
+            if(legsProdEmp.size() > Integer.parseInt(this.array[8])) {
+                int out = legsProdEmp.size() -1;
+                armsProdEmp.get(out).stop();
+                armsProdEmp.remove(out);
+            } else {
+                JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
+
+            } else {
+        
+        
+        
+            if(legsProdEmp.size() > Integer.parseInt(this.array[8])){
+                legsProdEmp.remove(0);
+            }else {
+                JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
+        }
+        }
+    
     public void deleteBodyProd(){
-        if(bodyProdEmp.size() > 1){
-            bodyProdEmp.remove(0);
-        }else {
-            JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
+        
+        if(this.running) {
+            if(bodyProdEmp.size() > Integer.parseInt(this.array[9])) {
+                int out = bodyProdEmp.size()-1;
+                bodyProdEmp.get(out).stop();
+                bodyProdEmp.remove(out);
+            } else {
+                JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        
+            }
+            
+            } else {
+            if(bodyProdEmp.size() > Integer.parseInt(this.array[9])){
+                bodyProdEmp.remove(0);
+            }else {
+                JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
+        }
     }
     
     
@@ -215,6 +363,7 @@ public class main {
         this.bodyProdu = bodyProdu;
         this.buttonsProdu = buttonsProdu;
         this.assemQ = assemQ;
+        this.running = true;
         
         if (this.onSim == false) {
             this.onSim = true;
