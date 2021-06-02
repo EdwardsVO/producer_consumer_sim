@@ -24,6 +24,8 @@ public class Interfaz extends javax.swing.JFrame {
     
     main main = new main();
     Almacen almacen = new Almacen();
+    resumen resumen = new resumen();
+    Intro intro = new Intro();
     
     
     public Interfaz() {
@@ -191,7 +193,9 @@ public class Interfaz extends javax.swing.JFrame {
         });
         jPanel1.add(initSimulation, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, 50));
 
+        stopSimulation.setBackground(new java.awt.Color(51, 51, 55));
         stopSimulation.setFont(new java.awt.Font("Roboto Mono Medium for Powerline", 0, 11)); // NOI18N
+        stopSimulation.setForeground(new java.awt.Color(255, 255, 255));
         stopSimulation.setText("STOP SIM");
         stopSimulation.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -502,6 +506,9 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void stopSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopSimulationActionPerformed
         main.stopSimulation();
+        this.setVisible(false);
+        
+        
     }//GEN-LAST:event_stopSimulationActionPerformed
 
     private void hireArmsProdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hireArmsProdActionPerformed

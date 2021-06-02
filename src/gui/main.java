@@ -21,15 +21,14 @@ public class main {
 
     Almacen almacen = new Almacen(); //VARIABLES VOLATILES
     Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
-    
-
     dataFunctions df = new dataFunctions();
+    resumen resumen = new resumen();
+    Time currentTime;
+    Boss currentBoss;
+
+    
     
     public String[] array = this.readData();
-    
-    Time currentTime;
-    
-    Boss currentBoss;
 
     ArrayList<ButtonsProd> buttonsProdEmp = new ArrayList<ButtonsProd>(); //PRODUCTORES DE BOTONES MAXIMOS
     ArrayList<ArmsProd> armsProdEmp = new ArrayList<>(); //PRODUCTORES DE BRAZOS MAXIMOS
@@ -397,6 +396,8 @@ public class main {
             } catch(Error e){
                 System.out.println(e);
             }
+            
+            resumen.setVisible(true);
             
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
