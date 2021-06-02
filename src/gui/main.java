@@ -301,7 +301,7 @@ public class main {
     public void deleteArmsProd(){
         if(this.running) {
             if(armsProdEmp.size() > Integer.parseInt(this.array[7])) {
-                int out = armsProdEmp.size() -1;
+                int out = armsProdEmp.size()-1;
                 armsProdEmp.get(out).stop();
                 armsProdEmp.remove(out);
             } else {
@@ -319,9 +319,9 @@ public class main {
     public void deleteLegsProd(){
         if(this.running) {
             if(legsProdEmp.size() > Integer.parseInt(this.array[8])) {
-                int out = legsProdEmp.size() -1;
-                armsProdEmp.get(out).stop();
-                armsProdEmp.remove(out);
+                int out = legsProdEmp.size()-1;
+                legsProdEmp.get(out).stop();
+                legsProdEmp.remove(out);
             } else {
                 JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
 
