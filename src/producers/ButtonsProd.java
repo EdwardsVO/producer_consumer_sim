@@ -25,7 +25,6 @@ public class ButtonsProd extends Thread {
     private javax.swing.JTextPane buttonQuantity;
     private boolean exit;
     
-    private int taco;
 
     public ButtonsProd(Semaphore semButtonProd, Semaphore semButtonCons, Semaphore mutex, String name) {
         this.mutex = mutex;
@@ -43,7 +42,6 @@ public class ButtonsProd extends Thread {
                         this.mutex.acquire();
                         Almacen.contButtons++;
                         this.cantProduc++;
-                        this.taco++;
                         this.console1.setText("Productor " + this.name + " ha fabricado 1 boton");
                         this.buttonQuantity.setText(String.valueOf(Almacen.contButtons));
                         Thread.sleep(Almacen.dayEquiv / this.ButtonsPerDay);
