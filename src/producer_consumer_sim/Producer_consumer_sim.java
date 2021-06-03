@@ -20,13 +20,11 @@ public class Producer_consumer_sim {
     public static void main(String[] args) {
         
         main main = new main();
-        
+        Interfaz interfaz = new Interfaz();
 //        main.readData();
 //        System.out.println(Integer.parseInt(main.array[15]));
               
-        Interfaz interfaz = new Interfaz();
-        
-        interfaz.setVisible(true);
+        main.main(interfaz);
         
         
     }
