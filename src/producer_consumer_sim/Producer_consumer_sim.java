@@ -7,6 +7,7 @@ package producer_consumer_sim;
 
 import gui.Interfaz;
 import functions.dataFunctions;
+import gui.Intro;
 import gui.main;
 /**
  *
@@ -19,13 +20,12 @@ public class Producer_consumer_sim {
      */
     public static void main(String[] args) {
         
-        main main = new main();
-        Interfaz interfaz = new Interfaz();
+        Intro intro = new Intro();
 //        main.readData();
 //        System.out.println(Integer.parseInt(main.array[15]));
               
-        main.main(interfaz);
-        
+        //main.main(interfaz);
+        intro.setVisible(true);
         
     }
     
