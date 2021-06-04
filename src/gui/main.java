@@ -24,7 +24,7 @@ public class main {
     Almacen almacen = new Almacen(); //VARIABLES VOLATILES
     Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
     dataFunctions df = new dataFunctions();
-    Interfaz interfaz;
+    resumen resumen = new resumen();
     Time currentTime;
     Boss currentBoss;
 
@@ -69,10 +69,7 @@ public class main {
     javax.swing.JTextPane assemQ;
     
 
-    public void main(Interfaz interfaz){
-        this.interfaz = interfaz;
-        this.interfaz.setVisible(true);
-    }
+    
 
     public void startAdministration(javax.swing.JTextPane panasDistributed, javax.swing.JTextPane panasBuilt, javax.swing.JTextPane tandas, javax.swing.JTextPane daysLeft){
         Manager manager = new Manager(mutexAdmin);
@@ -548,8 +545,8 @@ public class main {
             } catch(Error e){
                 System.out.println(e);
             }
-           
-         
+            
+            resumen.setVisible(true);
             
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
