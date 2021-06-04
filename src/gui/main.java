@@ -549,14 +549,12 @@ public class main {
                 System.out.println(e);
             }
            
-        JOptionPane.showMessageDialog(null, "Muchas gracias por ejecutar :D", "HASTA LA PROCSIMA", 2);
-        System.exit(0);
+         
             
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
         }
-        
-    }   
+    }
     
     public void createTime(javax.swing.JTextPane hours, javax.swing.JTextPane days, javax.swing.JTextPane daysLeft) {
         Time time = new Time(hours, days, daysLeft, mutexAdmin);

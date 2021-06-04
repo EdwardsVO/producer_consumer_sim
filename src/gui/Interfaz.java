@@ -24,6 +24,7 @@ public class Interfaz extends javax.swing.JFrame {
     
     main main = new main();
     Almacen almacen = new Almacen();
+    Intro intro = new Intro();
     
     
     public Interfaz() {
@@ -504,7 +505,8 @@ public class Interfaz extends javax.swing.JFrame {
 
     private void stopSimulationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopSimulationActionPerformed
         main.stopSimulation();
-               
+        
+        
         
     }//GEN-LAST:event_stopSimulationActionPerformed
 
@@ -585,7 +587,7 @@ public class Interfaz extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new Interfaz().setVisible(true);
+                new Interfaz().setVisible(true);
                 
             }
         });
