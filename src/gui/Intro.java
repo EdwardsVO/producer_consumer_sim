@@ -10,15 +10,12 @@ package gui;
  * @author Edward Vergel
  */
 public class Intro extends javax.swing.JFrame {
-    
-    Interfaz gui = new Interfaz();
+
     /**
      * Creates new form Intro
      */
     public Intro() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        this.setResizable(false);
     }
 
     /**
@@ -30,78 +27,21 @@ public class Intro extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        start = new javax.swing.JButton();
-        jLabel10 = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setFocusable(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel1.setFont(new java.awt.Font("Berlin Sans FB Demi", 1, 24)); // NOI18N
-        jLabel1.setText("Mattel Panas Production");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, 290, 20));
-
-        jLabel2.setFont(new java.awt.Font("Eras Bold ITC", 1, 14)); // NOI18N
-        jLabel2.setText("Qué estas esperando");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 250, 170, 20));
-
-        jLabel3.setFont(new java.awt.Font("Dialog", 0, 10)); // NOI18N
-        jLabel3.setText("Simulador rápido, sencillo y eficiente. ");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 60, 210, 20));
-
-        jLabel4.setText("El simulador cuenta con una interfaz gráfica muy sencilla de usar, en donde ");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 100, 450, 20));
-
-        jLabel5.setText("podras contratar o despedir productores y ensambladores, podrás ver los días,");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 120, 480, 20));
-
-        jLabel6.setText("el tiempo transcurrido y los dias faltantes para la entrega de los Panas.");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 140, 450, 20));
-
-        jLabel7.setText("Para comenzar no es necesario contratar, ya que por defecto al iniciar la simulación");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 160, 490, 20));
-
-        jLabel8.setText("se autocontraran un productor de cada uno y un ensamblador ");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 180, 450, 20));
-
-        jLabel9.setText("Para comenzar solo presiona \"Init simulation\" y tu simulador empezará a funcionar");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 200, 470, 20));
-
-        start.setText("COMENZAR");
-        start.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startActionPerformed(evt);
-            }
-        });
-        jPanel1.add(start, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 240, 110, 40));
-
-        jLabel10.setBackground(new java.awt.Color(0, 0, 0));
-        jLabel10.setFont(new java.awt.Font("Monospaced", 2, 18)); // NOI18N
-        jLabel10.setText("Bienvenido a  ");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 20, 210, 20));
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 300));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-        this.gui.setVisible(true);
-        this.setVisible(false);
-    }//GEN-LAST:event_startActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,17 +79,5 @@ public class Intro extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JButton start;
     // End of variables declaration//GEN-END:variables
 }
