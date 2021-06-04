@@ -15,8 +15,8 @@ public class Almacen {
         return this.array; 
     }
     
-    public static int contButtons = 0;
-    public static int contLegs = 0;
+    public static volatile int contButtons = 0;
+    public static volatile int contLegs = 0;
     public static volatile int contArms = 0;
     public static volatile int contBody = 0;
     public static volatile int hoursPassed = 0;

@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/producer_consumer_sim/Producer_consumer_sim.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/administration/Boss.java</file>
             <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/gui/main.java</file>
-            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/gui/Intro.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/functions/Time.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/administration/Manager.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/test/data.csv</file>
             <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/administration/Almacen.java</file>
-            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/gui/resumen.java</file>
             <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/gui/Interfaz.java</file>
+            <file>file:/C:/Users/Edward%20Vergel/Documents/NetBeansProjects/consumer_producer_sim/src/producers/BodyProd.java</file>
         </group>
     </open-files>
 </project-private>
