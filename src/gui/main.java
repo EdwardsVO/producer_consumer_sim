@@ -320,8 +320,8 @@ public class main {
         if(this.running) {
             if(legsProdEmp.size() > Integer.parseInt(this.array[8])) {
                 int out = legsProdEmp.size() -1;
-                armsProdEmp.get(out).stop();
-                armsProdEmp.remove(out);
+                legsProdEmp.get(out).stop();
+                legsProdEmp.remove(out);
             } else {
                 JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);        }
 
@@ -488,7 +488,7 @@ public class main {
     }
     
 
-    public void stopSimulation() { //ARREGLAR
+    public void stopSimulation() {
         if (this.onSim == true) {
             
             try{
