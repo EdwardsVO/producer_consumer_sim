@@ -24,7 +24,6 @@ public class main {
     Almacen almacen = new Almacen(); //VARIABLES VOLATILES
     Employee emp = new Employee(); //FUNCIONES PARA CONTRATAR Y DESPEDIR
     dataFunctions df = new dataFunctions();
-    resumen resumen = new resumen();
     Time currentTime;
     Boss currentBoss;
 
@@ -285,6 +284,7 @@ public class main {
                 int out = buttonsProdEmp.size()-1;
                 buttonsProdEmp.get(out).stop();
                 buttonsProdEmp.remove(out);
+                
             } else {
              JOptionPane.showMessageDialog(null, "Valor de productores mínimo alcanzado", "ERROR", 0);       
 
@@ -374,7 +374,7 @@ public class main {
                 buttonsProdEmp.clear();
                 for(int i = 0; i < Integer.parseInt(this.array[6]); i++){
 
-                    ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size() + 1));
+                    ButtonsProd buttonProd = emp.hireProdEmployee(semButtonProd, semButtonCons, mutexButtons, String.valueOf(buttonsProdEmp.size()));
                     buttonProd.showProduced(console1);
                     buttonProd.buttonQuantity(buttonQuantity);
                     this.buttonsProdu.setText(String.valueOf(i + 1));
@@ -541,12 +541,13 @@ public class main {
             
             this.currentTime.stop();
             this.currentBoss.stop();
+            JOptionPane.showMessageDialog(null, "Hasta la procsima :D", "GRACIAS", 3);
+            System.exit(0);
             
             } catch(Error e){
                 System.out.println(e);
             }
             
-            resumen.setVisible(true);
             
         } else {
             JOptionPane.showMessageDialog(null, "Inicialice simulacion", "ERROR", 0);
