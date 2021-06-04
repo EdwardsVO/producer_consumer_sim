@@ -19,7 +19,7 @@ public class dataFunctions {
             
             while((line = br.readLine()) != null) {
                 
-                
+                String[] data = line.split(",");
                 content += line + "\n";
             }
     } catch(FileNotFoundException e) {
